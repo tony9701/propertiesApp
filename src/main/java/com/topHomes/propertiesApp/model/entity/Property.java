@@ -1,6 +1,6 @@
-package com.topHomes.propertiesApp.model;
+package com.topHomes.propertiesApp.model.entity;
 
-import com.topHomes.propertiesApp.model.BaseEntity.BaseEntity;
+import com.topHomes.propertiesApp.model.entity.BaseEntity.BaseEntity;
 import com.topHomes.propertiesApp.model.enums.PropertyType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -14,7 +14,8 @@ import java.util.List;
 
 @Getter
 @Setter
-@Entity(name = "properties")
+@Entity
+@Table(name = "properties")
 public class Property extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
@@ -31,6 +32,7 @@ public class Property extends BaseEntity {
     private double price;
 
     @NotBlank
+    @Positive
     private double size;
 
     @OneToMany(mappedBy = "property", fetch = FetchType.EAGER)

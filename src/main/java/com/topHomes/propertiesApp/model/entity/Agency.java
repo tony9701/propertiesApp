@@ -1,10 +1,7 @@
-package com.topHomes.propertiesApp.model;
+package com.topHomes.propertiesApp.model.entity;
 
-import com.topHomes.propertiesApp.model.BaseEntity.BaseEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import com.topHomes.propertiesApp.model.entity.BaseEntity.BaseEntity;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -16,11 +13,13 @@ import java.util.List;
 
 @Getter
 @Setter
-@Entity(name = "agencies")
+@Entity
+@Table(name = "agencies")
 public class Agency extends BaseEntity {
 
     @NotBlank
     @Size(min = 3, max = 50)
+    @Column(unique = true)
     private String name;
 
     @NotBlank
@@ -32,6 +31,7 @@ public class Agency extends BaseEntity {
 
     @Email
     @NotBlank
+    @Column(unique = true)
     private String email;
 
     @OneToMany(mappedBy = "agency", fetch = FetchType.EAGER)

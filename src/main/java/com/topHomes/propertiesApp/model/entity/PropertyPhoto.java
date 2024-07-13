@@ -1,8 +1,9 @@
-package com.topHomes.propertiesApp.model;
+package com.topHomes.propertiesApp.model.entity;
 
-import com.topHomes.propertiesApp.model.BaseEntity.BaseEntity;
+import com.topHomes.propertiesApp.model.entity.BaseEntity.BaseEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +12,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@Entity(name = "photos")
+@Entity
+@Table(name = "photos")
 public class PropertyPhoto extends BaseEntity {
 
     @NotBlank

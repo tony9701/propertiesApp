@@ -1,4 +1,4 @@
-package com.topHomes.propertiesApp.model.BaseEntity;
+package com.topHomes.propertiesApp.model.entity.BaseEntity;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
