@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" 
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Poetsen+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/register-styles.css" />
+    <link rel="stylesheet" href="/static/css/navbar-style.css" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="/static/js/main.js"></script>
+    <title>TopHomes - Register</title>
+    
+</head>
+<body>
+    <header>
+        <div th:replace="~{fragments/navbar::navbar(activeLink=${''})}"></div>
+    </header>
+
+    <div class="register-form">
+        <div class="option">
+            <h2>Looking to Buy/Rent?</h2>
+            <p>If you are a user looking to buy or rent a property, please register as a user.</p>
+            <a href="" class="btn-register">Register as User</a>
+        </div>
+        <div class="option">
+            <h2>Looking to Sell?</h2>
+            <p>If you are an agency looking to sell properties, please register as an agency.</p>
+            <a href="" class="btn-register">Register as Agency</a>
+        </div>
+    </div>
+</body>
+</html>

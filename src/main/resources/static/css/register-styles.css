@@ -26,6 +26,53 @@ header {
     justify-content: center;
     align-items: center;
     height: calc(100vh - 60px); /* Adjust height to account for the navbar */
+    gap: 200px;
+}
+
+.register-form .option {
+    background: rgba(113, 135, 138, 0.6); /* Optional: Add a slight background to make the form stand out */
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(35vh - 60px);
+}
+
+.register-form .option h2 {
+    font-size: 36px;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.register-form .option p {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.register-form .btn-register {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3D0C11;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 1.3rem;
+    font-family: "Pacifico", cursive;
+}
+
+.register-form .btn-register:hover {
+    background-color: #5A0E15;
+    transform: scale(1.05);
+}
+
+.register-form .btn-register:active {
+    transform: scale(0.95);
 }
 
 .wrapper {
@@ -116,6 +163,13 @@ header {
 
 /* Responsive Media */
 
+@media(max-width: 870px) {
+    .register-form {
+        flex-direction: column;
+        height: auto;
+    }
+}
+
 @media(max-width: 992px) {
   
     .register-form {
@@ -124,4 +178,23 @@ header {
         align-items: center;
         height: calc(120vh - 60px); /* Adjust height to account for the navbar */
     }
+
+    .register-form .option {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+}
+
+@media(max-width: 1600px) {
+    .register-form {
+        gap: 100px;
+    }
+    
+}
+
+@media(max-width: 992px) {
+    .register-form {
+        gap: 50px;
+    }
+    
 }
