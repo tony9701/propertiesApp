@@ -9,7 +9,7 @@ body {
     height: 100vh;
     background-color: #efefed;
     background-image: url("/static/images/bg-photo1.jpg");
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
     background-size: cover;
     background-position: center;
     font-family: 'Poppins', sans-serif;
@@ -27,6 +27,7 @@ header {
     align-items: center;
     height: calc(100vh - 60px); /* Adjust height to account for the navbar */
     gap: 200px;
+    z-index: 1;
 }
 
 .register-form .option {
