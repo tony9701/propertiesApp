@@ -8,7 +8,7 @@
 body {
     height: 100vh;
     background-color: #efefed;
-    background-image: url("/static/images/bg-photo1.jpg");
+    background-image: url("/images/bg-photo1.jpg");
     background-repeat: repeat-y;
     background-size: cover;
     background-position: center;

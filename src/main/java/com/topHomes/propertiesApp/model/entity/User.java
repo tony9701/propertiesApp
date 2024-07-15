@@ -34,7 +34,7 @@ public class User extends BaseEntity {
     private String email;
 
     @NotBlank
-    @Size(min = 6, max = 50)
+    @Size(min = 6)
     private String password;
 
     @ManyToOne

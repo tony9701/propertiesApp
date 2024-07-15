@@ -8,10 +8,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Poetsen+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/css/register-styles.css" />
-    <link rel="stylesheet" href="/static/css/navbar-style.css" />
+    <link rel="stylesheet" href="/css/register-styles.css" />
+    <link rel="stylesheet" href="/css/navbar-style.css" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <script src="/static/js/main.js"></script>
+    <script src="/js/main.js"></script>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <title>TopHomes - Register</title>
     
 </head>
@@ -20,41 +21,12 @@
         <div th:replace="~{fragments/navbar::navbar(activeLink=${''})}"></div>
     </header>
 
-    <header th:fragment="navbar(activeLink)">
-        <div class="navbar">
-            <div class="logo"><a href="">TopHomes</a></div>
-            <ul class="links">
-                <li><a href="">Home</a></li>
-                <li><a href="">Properties</a></li>
-                <li><a href="">About Us</a></li>
-                <li><a href="">Contact Us</a></li>
-            </ul>
-            <div class="action_buttons">
-                <a href="" class="action_btn">Register</a>
-                <a href="" class="action_btn">Sign In</a>
-            </div>
-            
-            
-            <div class="toggle_btn">
-                <i class="fa-solid fa-bars"></i>
-            </div>
-        </div>
-
-        <div class="dropdown_menu">
-            <li><a href="">Home</a></li>
-            <li><a href="">Properties</a></li>
-            <li><a href="">About Us</a></li>
-            <li><a href="">Contact Us</a></li>
-            <li><a href="" class="action_btn">Register</a></li>
-            <li><a href="" class="action_btn">Sign In</a></li>
-        </div>
-     </header>
 
     <div class="register-form">
         <div class="option">
             <h2>Looking to Buy/Rent?</h2>
             <p>If you are a user looking to buy or rent a property, please register as a user.</p>
-            <a href="" class="btn-register">Register as User</a>
+            <a href="/user-register" class="btn-register">Register as User</a>
         </div>
         <div class="option">
             <h2>Looking to Sell?</h2>
