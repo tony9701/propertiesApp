@@ -8,19 +8,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Poetsen+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/css/register-styles.css" />
     <link rel="stylesheet" href="/static/css/navbar-style.css" />
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <script src="/static/js/main.js"></script>
     <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
+    <script src="/static/js/main.js"></script>
     <title>TopHomes</title>
 </head>
 <body>
-    <header>
-        <div th:replace="~{fragments/navbar::navbar(activeLink=${''})}"></div>
-
-    </header>
-
     <header th:fragment="navbar(activeLink)">
         <div class="navbar">
             <div class="logo"><a href="">TopHomes</a></div>
@@ -29,10 +22,13 @@
                 <li><a href="">Properties</a></li>
                 <li><a href="">About Us</a></li>
                 <li><a href="">Contact Us</a></li>
+                <li><a href="">Admin Panel</a></li>
+                <li><a href="">Agency Panel</a></li>
             </ul>
             <div class="action_buttons">
                 <a href="" class="action_btn">Register</a>
                 <a href="" class="action_btn">Sign In</a>
+                <a href="" class="action_btn">Log Out</a>
             </div>
             
             
@@ -46,46 +42,15 @@
             <li><a href="">Properties</a></li>
             <li><a href="">About Us</a></li>
             <li><a href="">Contact Us</a></li>
+            <li><a href="">Admin Panel</a></li>
+            <li><a href="">Agency Panel</a></li>
             <li><a href="" class="action_btn">Register</a></li>
             <li><a href="" class="action_btn">Sign In</a></li>
+            <li><a href="" class="action_btn">Log Out</a></li>
+            
         </div>
      </header>
 
-    <div class="register-form">  <!--Changed-->
-        <div class="wrapper">
-            <h1>Register a User</h1>
-            <div class="input-box">
-                <input type="text" placeholder="First Name"
-                required>
-                <i class='bx bxs-user' ></i>
-            </div>
-            <div class="input-box">
-                <input type="text" placeholder="Last Name"
-                required>
-                <i class='bx bxs-user' ></i>
-            </div>
-            <div class="input-box">
-                <input type="text" placeholder="Email"
-                required>
-                <i class="fa-solid fa-envelope"></i>
-            </div>
-            <div class="input-box">
-                <input type="password" placeholder="Create Password"
-                required>
-                <i class='bx bxs-lock-alt' ></i>
-            </div>
-            <div class="input-box">
-                <input type="password" placeholder="Confirm Password"
-                required>
-                <i class='bx bxs-lock-alt' ></i>
-            </div>
 
-            <button type="submit" class="btn-submit">Register</button>
-            <div class="sign-in-link"> <!--Changed-->
-                <p>Already has an account?
-                <a href="">Sign in</a></p>
-            </div>
-        </div>
-     </div>
 </body>
 </html>
