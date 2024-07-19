@@ -38,6 +38,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
 
     private static GrantedAuthority map(UserRolesEnum role) {
-        return new SimpleGrantedAuthority("ROLE_" + role);
+        return new SimpleGrantedAuthority("ROLE_" + role.name());
     }
 }
