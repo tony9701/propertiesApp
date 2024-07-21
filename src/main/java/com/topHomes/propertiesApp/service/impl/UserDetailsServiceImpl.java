@@ -11,6 +11,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
+import java.util.List;
+
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     private final UserRepository userRepository;
@@ -30,6 +32,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
 
     private static UserDetails map(User user) {
+
+        List<GrantedAuthority> list = user.getRoles().stream().map(UserRoles::getRole).map(UserDetailsServiceImpl::map).toList();
 
         return new PropertiesAppUserDetails(
                 user.getEmail(),

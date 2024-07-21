@@ -6,8 +6,6 @@ import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -26,7 +24,9 @@ public class SecurityConfig {
                                         // all static resources to "common locations" (css, images, js) are available to anyone
                                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                                         // some more resources for all users
-                                        .requestMatchers("/", "/login", "/user-register","/error", "/properties/buy").permitAll()
+                                        .requestMatchers("/", "/login", "/user-register", "/agency-register","/error",
+                                                "/properties/buy", "/properties/rent", "/contact-us",
+                                                "/about-us", "/properties").permitAll()
                                         // all other URL-s should be authenticated.
                                         .anyRequest()
                                         .authenticated()
@@ -40,9 +40,9 @@ public class SecurityConfig {
                                 // what is the name of the password parameter in the Login POST request?
                                 .passwordParameter("password")
                                 // What will happen if the login is successful
-                                .defaultSuccessUrl("/lognatTEST", true)
+                                .defaultSuccessUrl("/", true)
                                 // What will happen if the login fails
-                                .failureForwardUrl("/neLognatTEST")
+                                .failureForwardUrl("/login-error")
                 )
                 .logout(
                         logout ->

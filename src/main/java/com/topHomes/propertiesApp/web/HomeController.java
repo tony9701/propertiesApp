@@ -17,6 +17,9 @@ public class HomeController {
 
         //only for debug mode to check if the user is logged in
         Collection<? extends GrantedAuthority> authorities = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
+
+////        String authentication = SecurityContextHolder.getContext().getAuthentication().getAuthorities().stream().map(a -> a.getAuthority()).findFirst().get();
+//        System.out.println(authentication);
         return "index";
     }
 }
