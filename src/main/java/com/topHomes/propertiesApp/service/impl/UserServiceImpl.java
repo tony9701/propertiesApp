@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
     public void registerUser(RegisterUserDTO registerUserDTO) {
         //check if email already exist
         if (userRepository.existsByEmail(registerUserDTO.getEmail())) {
-         return;
+         return; //TODO send error
         }
 
         userRepository.save(map(registerUserDTO));

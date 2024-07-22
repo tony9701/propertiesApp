@@ -4,6 +4,7 @@ import com.topHomes.propertiesApp.model.entity.BaseEntity.BaseEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,7 +23,7 @@ public class Agency extends BaseEntity {
     @Column(unique = true)
     private String name;
 
-    @NotBlank
+
     @OneToOne()
     private Address address;
 

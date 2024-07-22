@@ -29,4 +29,14 @@ public class RegisterUserDTO {
 
         @NotEmpty
         private String confirmPassword;
+
+        public RegisterUserDTO(String email, String firstName, String lastName, String password) {
+                this.email = email;
+                this.firstName = firstName;
+                this.lastName = lastName;
+                this.password = password;
+        }
+
+        public RegisterUserDTO() {
+        }
 }
