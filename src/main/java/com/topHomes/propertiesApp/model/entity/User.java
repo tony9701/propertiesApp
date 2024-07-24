@@ -37,7 +37,7 @@ public class User extends BaseEntity {
     @Size(min = 6)
     private String password;
 
-    @ManyToOne
+    @ManyToOne()
     private Address address;
 
     @OneToMany(mappedBy = "user")

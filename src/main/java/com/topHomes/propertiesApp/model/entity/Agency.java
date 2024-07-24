@@ -8,6 +8,7 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.Transient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,9 @@ public class Agency extends BaseEntity {
     @Column(unique = true)
     private String name;
 
+    @NotBlank
+    @Size(min = 6)
+    private String password;
 
     @OneToOne()
     private Address address;
