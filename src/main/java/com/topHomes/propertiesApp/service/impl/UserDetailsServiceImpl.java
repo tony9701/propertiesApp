@@ -1,7 +1,7 @@
 package com.topHomes.propertiesApp.service.impl;
 
 import com.topHomes.propertiesApp.model.entity.User;
-import com.topHomes.propertiesApp.model.entity.UserRoles;
+import com.topHomes.propertiesApp.model.entity.UserRole;
 import com.topHomes.propertiesApp.model.enums.UserRolesEnum;
 import com.topHomes.propertiesApp.model.user.PropertiesAppUserDetails;
 import com.topHomes.propertiesApp.repository.UserRepository;
@@ -33,12 +33,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     private static UserDetails map(User user) {
 
-        List<GrantedAuthority> list = user.getRoles().stream().map(UserRoles::getRole).map(UserDetailsServiceImpl::map).toList();
+        List<GrantedAuthority> list = user.getRoles().stream().map(UserRole::getRole).map(UserDetailsServiceImpl::map).toList();
 
         return new PropertiesAppUserDetails(
                 user.getEmail(),
                 user.getPassword(),
-                user.getRoles().stream().map(UserRoles::getRole).map(UserDetailsServiceImpl::map).toList()
+                user.getRoles().stream().map(UserRole::getRole).map(UserDetailsServiceImpl::map).toList()
         );
     }
 

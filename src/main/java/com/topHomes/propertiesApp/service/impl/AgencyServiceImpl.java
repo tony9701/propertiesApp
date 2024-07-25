@@ -33,7 +33,7 @@ public class AgencyServiceImpl implements AgencyService {
 
 
             //register admin user for the agency with the same email and pass as the agency
-            // TODO set role agency-admin
+            //TODO set role agency-admin
 
         userService.registerUser(new RegisterUserDTO(
                     registerAgencyDTO.getEmail(),

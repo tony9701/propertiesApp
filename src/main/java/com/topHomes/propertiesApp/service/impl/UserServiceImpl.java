@@ -16,14 +16,12 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
     private final PasswordEncoder passwordEncoder;
-    private final AddressService addressService;
 
 
-    public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder, AddressRepository addressRepository, AddressService addressService) {
+    public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
         this.passwordEncoder = passwordEncoder;
-        this.addressService = addressService;
     }
 
 
@@ -36,6 +34,20 @@ public class UserServiceImpl implements UserService {
 
         userRepository.save(map(registerUserDTO));
 
+    }
+
+    @Override
+    public void registerAdmin() {
+
+        if (userRepository.count() == 0) {
+
+            registerUser(new RegisterUserDTO(
+                    "admin@admin.com",
+                    "admin",
+                    "admin",
+                    "admin"
+            ));
+        }
     }
 
     private User map(RegisterUserDTO registerUserDTO) {

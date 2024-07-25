@@ -13,14 +13,14 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "roles")
-public class UserRoles extends BaseEntity {
+public class UserRole extends BaseEntity {
 
     @NotNull
     @Column(unique = true)
     @Enumerated(EnumType.STRING)
     private UserRolesEnum role;
 
-    public UserRoles(UserRolesEnum role) {
+    public UserRole(UserRolesEnum role) {
         this.role = role;
     }
 

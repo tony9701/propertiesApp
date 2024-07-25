@@ -1,8 +1,11 @@
 package com.topHomes.propertiesApp.init;
 
-import com.topHomes.propertiesApp.model.entity.UserRoles;
+import com.topHomes.propertiesApp.model.entity.UserRole;
 import com.topHomes.propertiesApp.model.enums.UserRolesEnum;
 import com.topHomes.propertiesApp.repository.UserRoleRepository;
+import com.topHomes.propertiesApp.service.UserRoleService;
+import com.topHomes.propertiesApp.service.UserService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -12,29 +15,30 @@ import java.util.List;
 @Component
 public class initRoles implements CommandLineRunner {
 
-    private final UserRoleRepository userRoleRepository;
+    private final UserService userService;
+    private final UserRoleService userRoleService;
 
-    public initRoles(UserRoleRepository userRoleRepository) {
-        this.userRoleRepository = userRoleRepository;
+    public initRoles(UserService userService,  UserRoleService userRoleService) {
+        this.userService = userService;
+        this.userRoleService = userRoleService;
     }
 
     @Override
     public void run(String... args) throws Exception {
-        if (userRoleRepository.count() == 0) {
 
-            List<UserRolesEnum> userRolesEnums = Arrays.asList(
-                    UserRolesEnum.USER,
-                    UserRolesEnum.ADMIN,
-                    UserRolesEnum.AGENT,
-                    UserRolesEnum.AGENCY_ADMIN
-            );
+        //initialize user roles when the app starts for the first time
+        initializeRoles();
+        //initialize admin
+        initializeAdmin();
+
+    }
+
+    private void initializeAdmin() {
+        userService.registerAdmin();
+    }
 
 
-            userRolesEnums.forEach(
-                    userRole -> {
-                        userRoleRepository.save(new UserRoles(userRole));
-                    }
-            );
-        }
+    private void initializeRoles() {
+        userRoleService.initializeUserRoles();
     }
 }
