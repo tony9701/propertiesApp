@@ -11,6 +11,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -60,7 +61,7 @@ public class UserServiceImpl implements UserService {
 
         //get the new user(admin) and add the ADMIN role
         User user = userRepository.findByEmail("admin@admin.com").get();
-        List<UserRole> roles = user.getRoles();
+        List<UserRole> roles = new ArrayList<>(user.getRoles());
         roles.add(userRoleRepository.findByRole(UserRoleEnum.ADMIN));
         user.setRoles(roles);
         userRepository.save(user);

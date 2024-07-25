@@ -16,22 +16,22 @@
 <body>
     <header th:fragment="navbar(activeLink)">
         <div class="navbar">
-            <div class="logo"><a href="">TopHomes</a></div>
+            <div class="logo"><a href="/">TopHomes</a></div>
             <ul class="links">
-                <li><a href="">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li><a href="">Properties</a></li>
-                <li><a href="">About Us</a></li>
-                <li><a href="">Contact Us</a></li>
-                <li><a href="">Admin Panel</a></li>
-                <li><a href="">Agency Panel</a></li>
+                <li><a href="/about-us">About Us</a></li>
+                <li><a href="/contact-us">Contact Us</a></li>
+                <li sec:authorize="hasRole('ADMIN')"><a href="">Admin Panel</a></li>
+                <li sec:authorize="hasRole('AGENCY_ADMIN')"><a href="">Agency Panel</a></li>
             </ul>
             <div class="action_buttons">
                 <li class="nav-item" sec:authorize="!isAuthenticated()">
-                    <a href="" class="action_btn">Register</a>
+                    <a href="/register" class="action_btn">Register</a>
                 </li>
 
                 <li class="nav-item" sec:authorize="!isAuthenticated()">
-                    <a href="" class="action_btn">Sign In</a>
+                    <a href="/login" class="action_btn">Sign In</a>
                 </li>
 
                 <li class="nav-item" sec:authorize="isAuthenticated()">
@@ -53,8 +53,8 @@
             <li><a href="">Properties</a></li>
             <li><a href="">About Us</a></li>
             <li><a href="">Contact Us</a></li>
-            <li><a href="">Admin Panel</a></li>
-            <li><a href="">Agency Panel</a></li>
+            <li sec:authorize="hasRole('ADMIN')"><a href="">Admin Panel</a></li>
+            <li sec:authorize="hasRole('AGENCY_ADMIN')"><a href="">Agency Panel</a></li>
             <li class="nav-item" sec:authorize="!isAuthenticated()"><a href="" class="action_btn">Register</a></li>
             <li class="nav-item" sec:authorize="!isAuthenticated()"><a href="" class="action_btn">Sign In</a></li>
             <li class="nav-item" sec:authorize="isAuthenticated()">
