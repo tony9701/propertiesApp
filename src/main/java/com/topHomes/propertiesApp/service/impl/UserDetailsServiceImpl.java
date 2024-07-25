@@ -2,7 +2,7 @@ package com.topHomes.propertiesApp.service.impl;
 
 import com.topHomes.propertiesApp.model.entity.User;
 import com.topHomes.propertiesApp.model.entity.UserRole;
-import com.topHomes.propertiesApp.model.enums.UserRolesEnum;
+import com.topHomes.propertiesApp.model.enums.UserRoleEnum;
 import com.topHomes.propertiesApp.model.user.PropertiesAppUserDetails;
 import com.topHomes.propertiesApp.repository.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
@@ -42,7 +42,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         );
     }
 
-    private static GrantedAuthority map(UserRolesEnum role) {
+    private static GrantedAuthority map(UserRoleEnum role) {
         return new SimpleGrantedAuthority("ROLE_" + role.name());
     }
 }

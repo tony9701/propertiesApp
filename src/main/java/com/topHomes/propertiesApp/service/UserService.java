@@ -8,4 +8,6 @@ public interface UserService {
     void registerUser(RegisterUserDTO registerUserDTO);
 
     void registerAdmin();
+
+    boolean isUserRepoEmpty();
 }

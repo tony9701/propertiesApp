@@ -1,7 +1,7 @@
 package com.topHomes.propertiesApp.service.impl;
 
 import com.topHomes.propertiesApp.model.entity.UserRole;
-import com.topHomes.propertiesApp.model.enums.UserRolesEnum;
+import com.topHomes.propertiesApp.model.enums.UserRoleEnum;
 import com.topHomes.propertiesApp.repository.UserRoleRepository;
 import com.topHomes.propertiesApp.service.UserRoleService;
 import org.springframework.stereotype.Service;
@@ -23,19 +23,24 @@ public class UserRoleServiceImpl implements UserRoleService {
 
         if (userRoleRepository.count() == 0) {
 
-            List<UserRolesEnum> userRolesEnums = Arrays.asList(
-                    UserRolesEnum.USER,
-                    UserRolesEnum.ADMIN,
-                    UserRolesEnum.AGENT,
-                    UserRolesEnum.AGENCY_ADMIN
+            List<UserRoleEnum> userRoleEnums = Arrays.asList(
+                    UserRoleEnum.USER,
+                    UserRoleEnum.ADMIN,
+                    UserRoleEnum.AGENT,
+                    UserRoleEnum.AGENCY_ADMIN
             );
 
 
-            userRolesEnums.forEach(
+            userRoleEnums.forEach(
                     userRole -> {
                         userRoleRepository.save(new UserRole(userRole));
                     }
             );
         }
+    }
+
+    @Override
+    public boolean isUserRolesEmpty() {
+        return userRoleRepository.count() <= 0;
     }
 }

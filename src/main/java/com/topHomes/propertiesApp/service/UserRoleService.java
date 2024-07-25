@@ -6,4 +6,6 @@ import org.springframework.stereotype.Service;
 public interface UserRoleService {
 
     void initializeUserRoles();
+
+    boolean isUserRolesEmpty();
 }

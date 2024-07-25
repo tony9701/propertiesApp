@@ -2,13 +2,16 @@ package com.topHomes.propertiesApp.service.impl;
 
 import com.topHomes.propertiesApp.model.dto.RegisterUserDTO;
 import com.topHomes.propertiesApp.model.entity.User;
-import com.topHomes.propertiesApp.repository.AddressRepository;
+import com.topHomes.propertiesApp.model.entity.UserRole;
+import com.topHomes.propertiesApp.model.enums.UserRoleEnum;
 import com.topHomes.propertiesApp.repository.UserRepository;
-import com.topHomes.propertiesApp.service.AddressService;
+import com.topHomes.propertiesApp.repository.UserRoleRepository;
 import com.topHomes.propertiesApp.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -16,12 +19,14 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
     private final PasswordEncoder passwordEncoder;
+    private final UserRoleRepository userRoleRepository;
 
 
-    public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder, UserRoleRepository userRoleRepository) {
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
         this.passwordEncoder = passwordEncoder;
+        this.userRoleRepository = userRoleRepository;
     }
 
 
@@ -32,7 +37,11 @@ public class UserServiceImpl implements UserService {
          return; //TODO send error
         }
 
-        userRepository.save(map(registerUserDTO));
+        User user = map(registerUserDTO);
+        UserRole role = userRoleRepository.findByRole(UserRoleEnum.USER);
+        user.setRoles(List.of(role));
+
+        userRepository.save(user);
 
     }
 
@@ -48,6 +57,18 @@ public class UserServiceImpl implements UserService {
                     "admin"
             ));
         }
+
+        //get the new user(admin) and add the ADMIN role
+        User user = userRepository.findByEmail("admin@admin.com").get();
+        List<UserRole> roles = user.getRoles();
+        roles.add(userRoleRepository.findByRole(UserRoleEnum.ADMIN));
+        user.setRoles(roles);
+        userRepository.save(user);
+    }
+
+    @Override
+    public boolean isUserRepoEmpty() {
+        return userRepository.count() <= 0;
     }
 
     private User map(RegisterUserDTO registerUserDTO) {

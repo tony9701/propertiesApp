@@ -1,7 +1,7 @@
 package com.topHomes.propertiesApp.model.entity;
 
 import com.topHomes.propertiesApp.model.entity.BaseEntity.BaseEntity;
-import com.topHomes.propertiesApp.model.enums.UserRolesEnum;
+import com.topHomes.propertiesApp.model.enums.UserRoleEnum;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -18,9 +18,9 @@ public class UserRole extends BaseEntity {
     @NotNull
     @Column(unique = true)
     @Enumerated(EnumType.STRING)
-    private UserRolesEnum role;
+    private UserRoleEnum role;
 
-    public UserRole(UserRolesEnum role) {
+    public UserRole(UserRoleEnum role) {
         this.role = role;
     }
 
