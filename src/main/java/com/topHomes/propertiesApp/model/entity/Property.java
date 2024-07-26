@@ -1,9 +1,11 @@
 package com.topHomes.propertiesApp.model.entity;
 
 import com.topHomes.propertiesApp.model.entity.BaseEntity.BaseEntity;
-import com.topHomes.propertiesApp.model.enums.PropertyType;
+import com.topHomes.propertiesApp.model.enums.PropertyTypeEnum;
+import com.topHomes.propertiesApp.model.enums.TransactionTypeEnum;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
@@ -21,14 +23,19 @@ public class Property extends BaseEntity {
     @Enumerated(EnumType.STRING)
     @NotBlank
     @Column(name = "property_type")
-    private PropertyType propertyType;
+    private PropertyTypeEnum propertyTypeEnum;
 
     @NotBlank
     @Size(max = 1500)
     private String description;
 
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    @Column(name = "transaction_type")
+    private TransactionTypeEnum transactionType;
+
     @Positive
-    @NotBlank
+    @NotNull
     private double price;
 
     @NotBlank

@@ -8,7 +8,7 @@
 body {
   height: 100vh;
   background-color: #efefed;
-  background-image: url("/static/images/bg-photo1.jpg");
+  background-image: url("/images/bg-photo1.jpg");
   background-repeat: repeat-y;
   background-size: cover;
   background-position: center;
@@ -24,7 +24,7 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 60px); /* Adjust height to account for the navbar */
+  height: calc(120vh - 60px); /* Adjust height to account for the navbar */
   gap: 200px;
   z-index: 1;
 }

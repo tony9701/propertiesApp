@@ -1,6 +1,6 @@
 package com.topHomes.propertiesApp.model.enums;
 
-public enum PropertyType {
+public enum PropertyTypeEnum {
     HOUSE, APARTMENT, LAND, GARAGE, BUSINESS
 
 }
