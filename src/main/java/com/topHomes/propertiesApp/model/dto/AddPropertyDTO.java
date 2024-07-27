@@ -14,7 +14,7 @@ import lombok.Setter;
 public class AddPropertyDTO {
 
     @NotBlank
-    private String imageUrl;
+    private String photoUrl;
 
     @NotBlank
     @Size(min = 3, max = 50)
@@ -22,9 +22,6 @@ public class AddPropertyDTO {
 
     @NotNull
     private TransactionTypeEnum transactionType;
-
-    @NotBlank
-    private String location;
 
     @NotNull
     @Positive
@@ -36,6 +33,22 @@ public class AddPropertyDTO {
 
     @NotNull
     private PropertyTypeEnum propertyType;
+
+    @NotBlank
+    @Size(min = 3, max = 50)
+    private String country;
+
+    @NotBlank
+    @Size(min = 3, max = 50)
+    private String city;
+
+    @NotBlank
+    @Size(min = 3, max = 50)
+    private String street;
+
+    @NotBlank
+    @Size(min = 3, max = 50)
+    private String number;
 
     @NotBlank
     @Size(min = 5, max = 1500)

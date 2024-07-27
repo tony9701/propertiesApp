@@ -21,7 +21,7 @@ import java.util.List;
 public class Property extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
-    @NotBlank
+    @NotNull
     @Column(name = "property_type")
     private PropertyTypeEnum propertyTypeEnum;
 
@@ -38,7 +38,7 @@ public class Property extends BaseEntity {
     @NotNull
     private double price;
 
-    @NotBlank
+    @NotNull
     @Positive
     private double size;
 

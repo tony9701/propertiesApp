@@ -5,5 +5,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface AddressService {
-    Address getEmptyAddress();
+
+    Address createAddress(String city, String country, String number, String street);
 }

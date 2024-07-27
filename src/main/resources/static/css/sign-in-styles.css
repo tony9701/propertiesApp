@@ -26,7 +26,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 60px); /* Adjust height to account for the navbar */
+    height: auto; /* Adjust height to account for the navbar */
 }
 
 .wrapper {
@@ -36,6 +36,7 @@ header {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 400px; /* Ensure the form doesn't stretch too much on large screens */
+    margin-top: 200px;
 }
 
 .wrapper h1 {
@@ -138,7 +139,6 @@ header {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: calc(120vh - 60px); /* Adjust height to account for the navbar */
     }
 
     

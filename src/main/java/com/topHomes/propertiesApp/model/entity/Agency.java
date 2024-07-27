@@ -45,8 +45,12 @@ public class Agency extends BaseEntity {
     @OneToMany(mappedBy = "agency", fetch = FetchType.EAGER)
     private List<Property> properties;
 
+    @OneToMany(mappedBy = "agency", fetch = FetchType.EAGER)
+    private List<User> agents;
+
     public Agency() {
         this.bookings = new ArrayList<>();
         this.properties = new ArrayList<>();
+        this.agents = new ArrayList<>();
     }
 }

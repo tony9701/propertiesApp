@@ -40,6 +40,9 @@ public class User extends BaseEntity {
     @ManyToOne()
     private Address address;
 
+    @ManyToOne
+    private Agency agency;
+
     @OneToMany(mappedBy = "user")
     private List<Booking> bookings;
 

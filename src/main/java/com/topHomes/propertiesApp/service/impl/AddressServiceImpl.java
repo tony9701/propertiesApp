@@ -14,8 +14,9 @@ public class AddressServiceImpl implements AddressService {
         this.addressRepository = addressRepository;
     }
 
+
     @Override
-    public Address getEmptyAddress() {
-        return addressRepository.getById(Long.valueOf(1));
+    public Address createAddress(String city, String country, String number, String street) {
+        return addressRepository.save(new Address(city, country, number, street));
     }
 }

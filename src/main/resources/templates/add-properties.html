@@ -37,59 +37,72 @@
     <div class="register-form">
         <div class="wrapper">
             <h1>Add Property</h1>
-            <div class="input-box">
-                <input type="text" th:field="*{imageUrl}" placeholder="Image Url" required/>
-                <i class="fa-solid fa-image"></i>
-            </div>
+            <div class="form-columns">
+                <div class="form-left">
+                    <div class="input-box">
+                        <input type="text" th:field="*{photoUrl}" placeholder="Photo Url" required/>
+                        <i class="fa-solid fa-image"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="text" th:field="*{propertyName}" placeholder="Property Name" required/>
+                        <i class="fa-solid fa-home"></i>
+                    </div>
+                    <div class="input-box">
+                        <select name="propertyType" required>
+                            <option value="" disabled selected>Select Property Type</option>
+                            <option value="HOUSE">HOUSE</option>
+                            <option value="APARTMENT">APARTMENT</option>
+                            <option value="LAND">LAND</option>
+                            <option value="GARAGE">GARAGE</option>
+                            <option value="BUSINESS">BUSINESS</option>
+                        </select>
+                        <i class="fa-solid fa-building"></i>
+                    </div>
+                    <div class="input-box">
+                        <select name="transactionType" required>
+                            <option value="" disabled selected>
+                                Select Selling or Renting
+                            </option>
+                            <option value="RENT">RENT</option>
+                            <option value="SELL">SELL</option>
+                        </select>
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="number" name="price" placeholder="Price" required/>
+                        <i class="fa-solid fa-dollar-sign"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="number" name="size" placeholder="Size" required/>
+                        <i class="fa-solid fa-ruler-combined"></i>
+                    </div>
+                </div>
+                <div class="form-right">
 
-            <div class="input-box">
-                <input type="text" th:field="*{propertyName}" placeholder="Property Name" required/>
-                <i class="fa-solid fa-home"></i>
-            </div>
+                    <div class="input-box">
+                        <input type="text" name="country" placeholder="Country" required/>
+                        <i class="fa-solid fa-city"></i>
+                    </div>
 
-            <div class="input-box">
-                <select th:field="*{transactionType}" required>
-                    <option value="" disabled selected>
-                        Select Selling or Renting
-                    </option>
-                    <option value="RENT">RENT</option>
-                    <option value="SELL">SELL</option>
-                </select>
-                <i class="fa-solid fa-check"></i>
-            </div>
+                    <div class="input-box">
+                        <input type="text" name="city" placeholder="City" required/>
+                        <i class="fa-solid fa-city"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="text" name="street" placeholder="Street" required/>
+                        <i class="fa-solid fa-road"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="text" name="number" placeholder="Number" required/>
+                        <i class="fa-solid fa-hashtag"></i>
+                    </div>
 
-            <div class="input-box">
-                <input type="text" th:field="*{location}" placeholder="Location" required/>
-                <i class="fa-solid fa-map-marker-alt"></i>
+                    <div class="input-box">
+                        <textarea th:field="*{description}" placeholder="Description" required></textarea>
+                        <i class="fa-solid fa-align-left"></i>
+                    </div>
+                </div>
             </div>
-
-            <div class="input-box">
-                <input type="number" th:field="*{price}" placeholder="Price" required/>
-                <i class="fa-solid fa-dollar-sign"></i>
-            </div>
-
-            <div class="input-box">
-                <input type="number" th:field="*{size}" placeholder="Size" required/>
-                <i class="fa-solid fa-ruler-combined"></i>
-            </div>
-
-            <div class="input-box">
-                <select th:field="*{propertyType}" required >
-                    <option value="" disabled selected>Select Property Type</option>
-                    <option value="HOUSE">HOUSE</option>
-                    <option value="APARTMENT">APARTMENT</option>
-                    <option value="LAND">LAND</option>
-                    <option value="GARAGE">GARAGE</option>
-                    <option value="BUSINESS">BUSINESS</option>
-                </select>
-                <i class="fa-solid fa-building"></i>
-            </div>
-
-            <div class="input-box">
-                <textarea th:field="*{description}" placeholder="Description" required></textarea>
-                <i class="fa-solid fa-align-left"></i>
-            </div>
-
             <button type="submit" class="btn-submit">Add Property</button>
         </div>
     </div>

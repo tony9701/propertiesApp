@@ -31,8 +31,6 @@ public class Address extends BaseEntity {
     @NotBlank
     private String number;
 
-    private String postalCode;
-
     @OneToMany(mappedBy = "address", fetch = FetchType.EAGER)
     private List<User> users;
 
@@ -46,4 +44,10 @@ public class Address extends BaseEntity {
         this.users = new ArrayList<>();
     }
 
+    public Address(String city, String country, String number, String street) {
+        this.city = city;
+        this.country = country;
+        this.number = number;
+        this.street = street;
+    }
 }

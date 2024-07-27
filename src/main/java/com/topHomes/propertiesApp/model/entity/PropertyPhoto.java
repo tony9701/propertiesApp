@@ -21,4 +21,10 @@ public class PropertyPhoto extends BaseEntity {
 
     @ManyToOne(optional = false)
     private Property property;
+
+
+    public PropertyPhoto(String url, Property property) {
+        this.url = url;
+        this.property = property;
+    }
 }
