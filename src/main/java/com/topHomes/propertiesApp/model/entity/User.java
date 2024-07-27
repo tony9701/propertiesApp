@@ -69,4 +69,8 @@ public class User extends BaseEntity {
         this.favouriteProperties = new ArrayList<>();
         this.roles = new ArrayList<>();
     }
+
+    public void addRole(UserRole role) {
+        this.roles.add(role);
+    }
 }

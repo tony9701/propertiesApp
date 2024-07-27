@@ -15,6 +15,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -36,7 +37,12 @@ public class PropertyServiceImpl implements PropertyService {
 
     @Override
     public void addProperty(AddPropertyDTO addPropertyDTO) {
-        propertyRepository.save(map(addPropertyDTO));
+        Property property = propertyRepository.save(map(addPropertyDTO));
+
+        //create photo and set it in the property
+        PropertyPhoto photo = propertyPhotoService.createPhoto(property, addPropertyDTO.getPhotoUrl());
+        property.addPropertyPhoto(photo);
+        propertyRepository.save(property);
     }
 
     private Property map(AddPropertyDTO addPropertyDTO) {
@@ -60,14 +66,11 @@ public class PropertyServiceImpl implements PropertyService {
         boolean isAgentAdmin = user.getRoles().stream().anyMatch(role -> role.getRole().name().equals("AGENCY_ADMIN"));
         boolean isAdmin = user.getRoles().stream().anyMatch(role -> role.getRole().name().equals("ADMIN"));
 
+        //check if the user is admin, agent or agency-admin
         if (isAgent || isAgentAdmin || isAdmin) {
             Agency agency = user.getAgency();
             property.setAgency(agency);
         }
-
-        //create photo and set it in the property
-        PropertyPhoto photo = propertyPhotoService.createPhoto(property, addPropertyDTO.getPhotoUrl());
-        property.setPropertyPhotos(List.of(photo));
 
         return property;
     }

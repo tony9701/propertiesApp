@@ -20,6 +20,10 @@ import java.util.List;
 @Table(name = "properties")
 public class Property extends BaseEntity {
 
+    @NotBlank
+    @Size(min = 5, max = 100)
+    private String name;
+
     @Enumerated(EnumType.STRING)
     @NotNull
     @Column(name = "property_type")
@@ -61,6 +65,10 @@ public class Property extends BaseEntity {
         this.propertyPhotos = new ArrayList<>();
         this.bookings = new ArrayList<>();
         this.usersWhoFavorite = new ArrayList<>();
+    }
+
+    public void addPropertyPhoto(PropertyPhoto photo) {
+        this.propertyPhotos.add(photo);
     }
 }
 
