@@ -8,11 +8,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Poetsen+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/css/styles.css" />
-    <link rel="stylesheet" href="/static/css/navbar-style.css" />
+    <link rel="stylesheet" href="/css/admin-panel.css" />
+    <link rel="stylesheet" href="/css/navbar-style.css" />
     <script src="/js/main.js"></script>
-    <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
-    <title>TopHomes</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <title>TopHomes - Admin Panel</title>
 </head>
 <body>
     <header>
@@ -20,38 +20,15 @@
 
     </header>
 
-    <header th:fragment="navbar(activeLink)">
-        <div class="navbar">
-            <div class="logo"><a href="">TopHomes</a></div>
-            <ul class="links">
-                <li><a href="">Home</a></li>
-                <li><a href="">Properties</a></li>
-                <li><a href="">About Us</a></li>
-                <li><a href="">Contact Us</a></li>
-            </ul>
-            <div class="action_buttons">
-                <a href="" class="action_btn">Register</a>
-                <a href="" class="action_btn">Sign In</a>
-            </div>
-            
-            
-            <div class="toggle_btn">
-                <i class="fa-solid fa-bars"></i>
+    <div class="users-container">
+        <h1>Users Panel</h1>
+        <div th:each="user : ${allUsers}" class="user-panel">
+            <p class="user-info" th:text="${user.getFirstName() + ' - ' + user.getLastName()}"></p>
+            <div class="user-actions">
+                <button class="btn-details" th:attr="data-id=${user.getId()}">Details</button>
+                <button class="btn-remove" th:attr="data-id=${user.getId()}">Remove</button>
             </div>
         </div>
-
-        <div class="dropdown_menu">
-            <li><a href="">Home</a></li>
-            <li><a href="">Properties</a></li>
-            <li><a href="">About Us</a></li>
-            <li><a href="">Contact Us</a></li>
-            <li><a href="" class="action_btn">Register</a></li>
-            <li><a href="" class="action_btn">Sign In</a></li>
-        </div>
-     </header>
-
-
-
-
+    </div>
 </body>
 </html>

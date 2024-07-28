@@ -1,7 +1,10 @@
 package com.topHomes.propertiesApp.service;
 
 import com.topHomes.propertiesApp.model.dto.RegisterUserDTO;
+import com.topHomes.propertiesApp.model.entity.User;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public interface UserService {
@@ -10,4 +13,6 @@ public interface UserService {
     void registerAdmin();
 
     boolean isUserRepoEmpty();
+
+    List<User> getAllUsers();
 }

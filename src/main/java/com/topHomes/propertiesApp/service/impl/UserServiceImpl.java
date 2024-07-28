@@ -72,6 +72,11 @@ public class UserServiceImpl implements UserService {
         return userRepository.count() <= 0;
     }
 
+    @Override
+    public List<User> getAllUsers() {
+        return new ArrayList<>(userRepository.findAll());
+    }
+
     private User map(RegisterUserDTO registerUserDTO) {
         User mappedEntity = modelMapper.map(registerUserDTO, User.class);
 

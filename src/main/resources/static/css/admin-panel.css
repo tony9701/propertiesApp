@@ -1,0 +1,107 @@
+/* Apply existing styles from the provided CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    height: 100vh;
+    background-color: #efefed;
+    background-image: url("/images/bg-photo1.jpg");
+    background-repeat: repeat-y;
+    background-size: cover;
+    background-position: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+header {
+    position: relative;
+    padding: 0 2rem;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.users-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    border: solid 2px black;
+    width: 20rem;
+
+
+    margin: 15rem 5rem;
+}
+
+.user-panel {
+    background: rgba(113, 135, 138, 0.6); /* Slight background to make the panel stand out */
+    padding: 1rem; /* Smaller padding for a more compact panel */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Smaller width for more compact panels */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem; /* Margin for spacing between panels */
+
+}
+
+.user-info {
+    font-size: 1rem;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.user-actions {
+    display: flex;
+    gap: 0.5rem; /* Smaller gap between buttons */
+}
+
+.btn-details, .btn-remove {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8rem; /* Smaller font size for buttons */
+}
+
+.btn-details {
+    background-color: #3D0C11;
+    color: #fff;
+}
+
+.btn-remove {
+    background-color: #B00020;
+    color: #fff;
+}
+
+.btn-details:hover {
+    background-color: #5A0E15;
+    transform: scale(1.05);
+}
+
+.btn-remove:hover {
+    background-color: #D32F2F;
+    transform: scale(1.05);
+}
+
+.btn-details:active, .btn-remove:active {
+    transform: scale(0.95);
+}
+
+@media(max-width: 992px) {
+    .user-panel {
+        width: 100%;
+    }
+}
+
+@media(max-width: 768px) {
+    .user-panel {
+        width: 100%;
+    }
+}
