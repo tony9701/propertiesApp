@@ -20,15 +20,46 @@
 
     </header>
 
-    <div class="users-container">
-        <h1>Users</h1>
-        <div th:each="user : ${allUsers}" class="user-panel">
-            <p class="user-info" th:text="${user.getEmail()}"></p>
-            <div class="user-actions">
-                <button class="btn-details" th:attr="data-id=${user.getId()}">Details</button>
-                <button class="btn-remove" th:attr="data-id=${user.getId()}">Remove</button>
+    <div class="nav-buttons">
+        <button onclick="scrollToSection('users-section')">Users</button>
+        <button onclick="scrollToSection('agencies-section')">Agencies</button>
+        <button onclick="scrollToSection('properties-section')">Properties</button>
+    </div>
+
+    <div class="users-wrapper">
+        <div id="users-section" class="users-container">
+            <h1>Users</h1>
+            <div th:each="user : ${allUsers}" class="user-panel">
+                <p class="user-info" th:text="'Email: ' + ${user.getEmail()}"></p>
+                <div class="user-actions">
+                    <button class="btn-details" th:attr="data-id=${user.getId()}">Details</button>
+                    <button class="btn-remove" th:attr="data-id=${user.getId()}">Remove</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="agencies-section" class="users-container">
+            <h1>Agencies</h1>
+            <div th:each="agency : ${allAgencies}" class="user-panel">
+                <p class="user-info" th:text="'Name: ' + ${agency.getName()}"></p>
+                <div class="user-actions">
+                    <button class="btn-details" th:attr="data-id=${agency.getId()}">Details</button>
+                    <button class="btn-remove" th:attr="data-id=${agency.getId()}">Remove</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="properties-section" class="users-container">
+            <h1>Properties</h1>
+            <div th:each="property : ${allProperties}" class="user-panel">
+                <p class="user-info" th:text="${property.getName()}"></p>
+                <div class="user-actions">
+                    <button class="btn-details" th:attr="data-id=${property.getId()}">Details</button>
+                    <button class="btn-remove" th:attr="data-id=${property.getId()}">Remove</button>
+                </div>
             </div>
         </div>
     </div>
+
 </body>
 </html>

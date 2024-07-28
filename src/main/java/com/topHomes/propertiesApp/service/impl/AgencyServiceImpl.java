@@ -66,6 +66,11 @@ public class AgencyServiceImpl implements AgencyService {
         agencyRepository.save(map(registerAgencyDTO));
     }
 
+    @Override
+    public List<Agency> getAllAgencies() {
+        return agencyRepository.findAll();
+    }
+
     private Agency map(RegisterAgencyDTO registerAgencyDTO) {
         Agency agency = modelMapper.map(registerAgencyDTO, Agency.class);
         agency.setPassword(passwordEncoder.encode(registerAgencyDTO.getPassword()));

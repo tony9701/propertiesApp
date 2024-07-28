@@ -12,3 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
             : 'fa-solid fa-bars';
     };
 });
+
+function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+}

@@ -45,6 +45,11 @@ public class PropertyServiceImpl implements PropertyService {
         propertyRepository.save(property);
     }
 
+    @Override
+    public List<Property> getAllProperties() {
+       return propertyRepository.findAll();
+    }
+
     private Property map(AddPropertyDTO addPropertyDTO) {
         Property property = modelMapper.map(addPropertyDTO, Property.class);
 

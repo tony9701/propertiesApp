@@ -8,12 +8,16 @@
 
 body {
     height: 100vh;
-    background-color: #babec0;
+    background-color: #d5e4eb;
     background-image: url("/images/bg12.jpg");
-    background-repeat: no-repeat, repeat;
-    background-size: cover, cover;
-    background-position: center, center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     font-family: 'Poppins', sans-serif;
+}
+
+h1 {
+    text-align: center;
 }
 
 header {
@@ -23,18 +27,24 @@ header {
     margin-top: 1rem;
 }
 
+.users-wrapper {
+    display: flex;
+    justify-content: space-around; /* Adjusts spacing between containers */
+    padding: 1rem;
+}
+
 .users-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     gap: 1rem;
     padding: 1rem;
     border: solid 2px black;
-    width: 20rem;
-
-
-    margin: 15rem 5rem;
+    width: 25rem;
+    margin: 10rem 1rem;
 }
+
 
 .user-panel {
     background: rgba(113, 135, 138, 0.6); /* Slight background to make the panel stand out */
@@ -47,12 +57,12 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 1rem; /* Margin for spacing between panels */
-
+    margin: 1rem 0; /* Margin for spacing between panels */
 }
 
+
 .user-info {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     color: black;
     font-weight: bold;
     margin-bottom: 1rem;
@@ -61,6 +71,38 @@ header {
 .user-actions {
     display: flex;
     gap: 0.5rem; /* Smaller gap between buttons */
+}
+
+.nav-buttons {
+    display: none; /* Hidden by default */
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: transparent;
+    z-index: 1000;
+    margin-top: 5.5rem;
+    margin-left: 2rem;
+}
+
+.nav-buttons button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    background-color: #3D0C11;
+    color: #fff;
+}
+
+.nav-buttons button:hover {
+    background-color: #5A0E15;
+}
+
+.nav-buttons button:active {
+    transform: scale(0.95);
 }
 
 .btn-details, .btn-remove {
@@ -96,8 +138,23 @@ header {
 }
 
 @media(max-width: 992px) {
+    .users-wrapper {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .users-container {
+        width: 70%; /* Adjust width to fit within the parent container */
+        margin: 10rem 0; /* Adjust margin for vertical spacing */
+    }
+
     .user-panel {
-        width: 100%;
+        width: 100%; /* Adjust width to fit within the users-container */
+    }
+
+    .nav-buttons {
+        display: flex; /* Show the navigation buttons on smaller screens */
     }
 }
 

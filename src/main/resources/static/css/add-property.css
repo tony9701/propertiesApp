@@ -8,10 +8,10 @@
 body {
     height: 100vh;
     background-color: #babec0;
-    background-image: url("/images/bg12.jpg");
-    background-repeat: repeat-y;
-    background-size: cover;
-    background-position: center;
+    background-image: url("/images/bg12.jpg"), url("/images/bg13.jpg");
+    background-repeat: no-repeat, no-repeat;
+    background-size: cover, cover;
+    background-position: center, center;
     font-family: "Poppins", sans-serif;
 }
 
