@@ -8,8 +8,8 @@
 
 body {
     height: 100vh;
-    background-color: #efefed;
-    background-image: url("/images/bg-photo1.jpg");
+    background-color: #babec0;
+    background-image: url("/images/bg12.jpg");
     background-repeat: repeat-y;
     background-size: cover;
     background-position: center;
@@ -74,7 +74,7 @@ nav {
 
 .contact-form h1 {
     font-size: 36px;
-    color: #fff;
+    color: black;
     margin-bottom: 20px;
 }
 
@@ -92,11 +92,11 @@ nav {
     background: transparent;
     border: none;
     outline: none;
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    border: 2px solid white;
     border-radius: 40px;
-    font-size: 18px;
+    font-size: 20px;
     padding: 20px;
-    color: #fff;
+    color: black;
 }
 
 .contact-form textarea {
@@ -105,7 +105,8 @@ nav {
 
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
-    color: #fff;
+    color: black;
+    font-weight: bold;
 }
 
 .contact-form i {
@@ -114,7 +115,7 @@ nav {
     top: 50%;
     transform: translateY(-50%);
     font-size: 20px;
-    color: #fff;
+    color: black;
 }
 
 .contact-form .btn-submit {

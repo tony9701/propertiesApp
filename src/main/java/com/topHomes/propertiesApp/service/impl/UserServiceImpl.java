@@ -74,6 +74,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getAllUsers() {
+        //TODO make it pageable in future
         return new ArrayList<>(userRepository.findAll());
     }
 

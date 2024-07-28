@@ -7,8 +7,8 @@
 
 body {
     height: 100vh;
-    background-color: #efefed;
-    background-image: url("/images/bg-photo1.jpg");
+    background-color: #babec0;
+    background-image: url("/images/bg12.jpg");
     background-repeat: repeat-y;
     background-size: cover;
     background-position: center;
@@ -48,7 +48,7 @@ header {
 .wrapper h1 {
     font-size: 36px;
     text-align: center;
-    color: #fff;
+    color: black;
     margin-bottom: 10px;
 }
 
@@ -85,9 +85,14 @@ header {
     outline: none;
     border: 2px solid rgba(255, 255, 255, 3);
     border-radius: 10px;
-    font-size: 18px;
+    font-size: 20px;
     padding: 20px;
-    color: #fff;
+    color: black;
+    font-weight: bold;
+}
+
+.input-box select {
+    color: white;
 }
 
 .input-box textarea {

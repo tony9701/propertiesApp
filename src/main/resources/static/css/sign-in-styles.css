@@ -7,8 +7,8 @@
 
 body {
     height: 100vh;
-    background-color: #efefed;
-    background-image: url("/images/bg-photo1.jpg");
+    background-color: #babec0;
+    background-image: url("/images/bg12.jpg");
     background-repeat: repeat-y;
     background-size: cover;
     background-position: center;
@@ -42,7 +42,7 @@ header {
 .wrapper h1 {
     font-size: 36px;
     text-align: center;
-    color: #fff;
+    color: black;
 }
 
 .wrapper .input-box {
@@ -67,7 +67,8 @@ header {
 } 
 
 .input-box input::placeholder {
-    color: #fff;
+    color: black;
+    font-weight: bold;
 }
 
 .input-box i {
@@ -81,7 +82,7 @@ header {
 .remember-forgot {
     margin-bottom: 1rem;
     font-size: 15px;
-    color: #fff;
+    color: black;
 }
 
 
@@ -115,11 +116,12 @@ header {
 .register-link {
     margin-top: 1rem;
     text-align: center;
-    color: white;
+    color: black;
+    font-weight: bold;
 }
 
 .register-link a {
-    color: #fff;
+    color: black;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
 }

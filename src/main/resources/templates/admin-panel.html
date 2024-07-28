@@ -21,9 +21,9 @@
     </header>
 
     <div class="users-container">
-        <h1>Users Panel</h1>
+        <h1>Users</h1>
         <div th:each="user : ${allUsers}" class="user-panel">
-            <p class="user-info" th:text="${user.getFirstName() + ' - ' + user.getLastName()}"></p>
+            <p class="user-info" th:text="${user.getEmail()}"></p>
             <div class="user-actions">
                 <button class="btn-details" th:attr="data-id=${user.getId()}">Details</button>
                 <button class="btn-remove" th:attr="data-id=${user.getId()}">Remove</button>

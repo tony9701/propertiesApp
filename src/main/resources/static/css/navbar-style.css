@@ -132,7 +132,7 @@ header {
     top: 80px;
     width: 300px;
     height: 0px;
-    background: rgba(234,233,229,225);
+    background: #babec0;
     backdrop-filter: blur(15px);
     border-radius: 20px;
     overflow: hidden; 
