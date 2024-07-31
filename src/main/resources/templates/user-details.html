@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Poetsen+One&display=swap"
           rel="stylesheet">
-    <link rel="stylesheet" href="/css/user-details.css"/>
+    <link rel="stylesheet" href="/css/user-details-2.css"/>
     <link rel="stylesheet" href="/css/navbar-style.css"/>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="/js/main.js"></script>
@@ -24,22 +24,19 @@
 </header>
 
 
-<div class="container">
-    <div class="user-info">
-        <img th:src="${property.getPropertyPhotos().getFirst().getUrl()}" class="property-image" alt="Property Image">
-        <div class="details">
-            <h2><span th:text="${property.getName()}"></span></h2>
-            <p>Size: <span th:text="${property.getSize()}"></span>m2</p>
-            <p>Price: <span th:text="${property.getPrice()}"></span>$</p>
-            <p th:if="${property.getAddress() != null}">Address:
-                <span th:text="${property.getAddress().getStreet()}">Street</span>
-                <span th:text="${property.getAddress().getNumber()}">Number</span>,
-                <span th:text="${property.getAddress().getCity()}">City</span>,
-                <span th:text="${property.getAddress().getCountry()}">Country</span>
-            </p>
-            <p><span th:text="${property.getDescription()}"></span></p>
-            <a href="javascript:history.back()" class="btn-back">Back</a>
-        </div>
+<div class="user-info">
+    <div class="details">
+        <h2>User Information</h2>
+        <p>First Name: <span th:text="${user.getFirstName()}">First Name</span></p>
+        <p>Last Name: <span th:text="${user.getLastName()}">Last Name</span></p>
+        <p>Email: <span th:text="${user.getEmail()}">Email</span></p>
+        <p th:if="${user.getAddress() != null}">Address:
+            <span th:text="${user.getAddress().getStreet()}">Street</span>
+            <span th:text="${user.getAddress().getNumber()}">Number</span>,
+            <span th:text="${user.getAddress().getCity()}">City</span>,
+            <span th:text="${user.getAddress().getCountry()}">Country</span>
+        </p>
+        <a href="javascript:history.back()" class="btn-back">Back</a>
     </div>
 </div>
 </body>

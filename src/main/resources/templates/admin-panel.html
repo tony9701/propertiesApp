@@ -32,7 +32,7 @@
             <div th:each="user : ${allUsers}" class="user-panel">
                 <p class="user-info" th:text="'Email: ' + ${user.getEmail()}"></p>
                 <div class="user-actions">
-                    <button class="btn-details" th:attr="data-id=${user.getId()}">Details</button>
+                    <a th:href="@{/users/{id}(id=${user.getId()})}"><button class="btn-details" th:attr="data-id=${user.getId()}">Details</button></a>
                     <button class="btn-remove" th:attr="data-id=${user.getId()}">Remove</button>
                 </div>
             </div>
@@ -54,8 +54,16 @@
             <div th:each="property : ${allProperties}" class="user-panel">
                 <p class="user-info" th:text="${property.getName()}"></p>
                 <div class="user-actions">
-                    <button class="btn-details" th:attr="data-id=${property.getId()}">Details</button>
-                    <button class="btn-remove" th:attr="data-id=${property.getId()}">Remove</button>
+                    <a th:href="@{/properties/{id}(id=${property.getId()})}"><button class="btn-details" th:attr="data-id=${property.getId()}">Details</button></a>
+                    <form th:action="@{/properties/{id}(id=${property.getId()})}" method="post" onsubmit="return confirmDelete(this);">
+                        <!-- Hidden input to override HTTP method to DELETE -->
+                        <input type="hidden" name="_method" value="delete">
+
+                        <!-- Button to submit the form -->
+                        <button type="submit" class="btn-remove">
+                            Remove
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>

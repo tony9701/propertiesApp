@@ -16,3 +16,13 @@ document.addEventListener("DOMContentLoaded", function() {
 function scrollToSection(id) {
     document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
 }
+
+function confirmDelete(form) {
+    if (confirm("Are you sure you want to delete this property?")) {
+        // Form submission will continue
+        return true;
+    } else {
+        // Form submission will be stopped
+        return false;
+    }
+}

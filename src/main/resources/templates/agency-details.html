@@ -15,7 +15,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="/js/main.js"></script>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-    <title>TopHomes - User</title>
+    <title>TopHomes - Agency Info</title>
 
 </head>
 <body>
@@ -24,22 +24,19 @@
 </header>
 
 
-<div class="container">
-    <div class="user-info">
-        <img th:src="${property.getPropertyPhotos().getFirst().getUrl()}" class="property-image" alt="Property Image">
-        <div class="details">
-            <h2><span th:text="${property.getName()}"></span></h2>
-            <p>Size: <span th:text="${property.getSize()}"></span>m2</p>
-            <p>Price: <span th:text="${property.getPrice()}"></span>$</p>
-            <p th:if="${property.getAddress() != null}">Address:
-                <span th:text="${property.getAddress().getStreet()}">Street</span>
-                <span th:text="${property.getAddress().getNumber()}">Number</span>,
-                <span th:text="${property.getAddress().getCity()}">City</span>,
-                <span th:text="${property.getAddress().getCountry()}">Country</span>
-            </p>
-            <p><span th:text="${property.getDescription()}"></span></p>
-            <a href="javascript:history.back()" class="btn-back">Back</a>
-        </div>
+<div class="user-info">
+    <div class="details">
+        <h2>Agency Information</h2>
+        <p>Name: <span th:text="${agency.getName()}">Name</span></p>
+        <p>Last Name: <span th:text="${user.getLastName()}">Last Name</span></p>
+        <p>Email: <span th:text="${agency.getEmail()}">Email</span></p>
+        <p th:if="${user.getAddress() != null}">Address:
+            <span th:text="${user.getAddress().getStreet()}">Street</span>
+            <span th:text="${user.getAddress().getNumber()}">Number</span>,
+            <span th:text="${user.getAddress().getCity()}">City</span>,
+            <span th:text="${user.getAddress().getCountry()}">Country</span>
+        </p>
+        <a href="javascript:history.back()" class="btn-back">Back</a>
     </div>
 </div>
 </body>

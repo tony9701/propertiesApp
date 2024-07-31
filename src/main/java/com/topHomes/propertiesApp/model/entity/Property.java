@@ -46,13 +46,13 @@ public class Property extends BaseEntity {
     @Positive
     private double size;
 
-    @OneToMany(mappedBy = "property", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "property", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PropertyPhoto> propertyPhotos;
 
     @OneToOne(optional = false)
     private Address address;
 
-    @OneToMany(mappedBy = "property", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "property", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Booking> bookings;
 
     @ManyToOne(optional = false)
