@@ -18,4 +18,10 @@ public interface UserService {
     List<User> getAllUsers();
 
     Optional<User> getCurrentUser();
+
+    Optional<User> getUserByEmail(String email);
+
+    User addRoleAndSave(User user);
+
+    User deleteAgent(User user);
 }

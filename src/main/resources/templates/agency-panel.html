@@ -31,8 +31,8 @@
 
 <h1 class="head-title">Agency Panel - <span th:text="${agency.getName()}"></span></h1>
 <div class="top-buttons">
-    <a th:href="@{/users/{id}/my-properties(id=${user.getId()})}" class="btn-details">My Properties</a>
-    <a href="https://www.example.com" sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_AGENCY_ADMIN')" class="btn-details">Add Agent</a>
+    <a sec:authorize="hasAnyRole('ROLE_AGENT', 'ROLE_AGENCY_ADMIN')" th:href="@{/users/my-properties}" class="btn-details">My Properties</a>
+    <a href="/agencies/add-agent" sec:authorize="hasRole('ROLE_AGENCY_ADMIN')" class="btn-details">Add Agent</a>
 </div>
 <div class="users-wrapper">
     <div id="users-section" class="users-container">
@@ -40,10 +40,10 @@
         <div th:each="agent : ${agency.getAgents()}" class="user-panel">
             <p class="user-info" th:text="'Email: ' + ${agent.getEmail()}"></p>
             <div class="user-actions">
-                <a th:href="@{/users/{id}(id=${agent.getId()})}">
+                <a th:href="@{/agencies/agents/{id}(id=${agent.getId()})}">
                     <button class="btn-details" th:attr="data-id=${agent.getId()}">Details</button>
                 </a>
-                <form th:action="@{/users/{id}(id=${agent.getId()})}" method="post"
+                <form sec:authorize="hasAnyRole('AGENCY_ADMIN', 'ADMIN')" th:action="@{/agencies/delete/{id}(id=${agent.getId()})}" method="post"
                       onsubmit="return confirmDelete(this);">
                     <!-- Hidden input to override HTTP method to DELETE -->
                     <input type="hidden" name="_method" value="delete">
@@ -76,7 +76,7 @@
                 <a th:href="@{/properties/{id}(id=${property.getId()})}">
                     <button class="btn-details" th:attr="data-id=${property.getId()}">Details</button>
                 </a>
-                <form th:action="@{/properties/{id}(id=${property.getId()})}" method="post"
+                <form sec:authorize="hasAnyRole('AGENCY_ADMIN', 'ADMIN')" th:action="@{/properties/{id}(id=${property.getId()})}" method="post"
                       onsubmit="return confirmDelete(this);">
                     <!-- Hidden input to override HTTP method to DELETE -->
                     <input type="hidden" name="_method" value="delete">

@@ -62,10 +62,11 @@ public class UserController {
         return "user-not-found";
     }
 
-    @GetMapping("/{id}/my-properties")
-    public String myProperties(@PathVariable Long id, Model model) {
+    @GetMapping("/my-properties")
+    public String myProperties(Model model) {
 
         User user = userService.getCurrentUser().get();
+
         model.addAttribute("user", user);
         return "my-properties";
     }

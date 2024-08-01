@@ -26,10 +26,16 @@ public class SecurityConfig {
                                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                                         // some more resources for all users
                                         .requestMatchers("/", "/login", "/register", "/user-register", "/agency-register","/error",
-                                                "/properties/buy", "/properties/rent", "/contact-us",
+                                                "/properties/buy", "/properties/rent", "/properties/", "/contact-us",
                                                 "/about-us", "/properties").permitAll()
                                         // all other URL-s should be authenticated.
                                         .requestMatchers("/admin").hasRole("ADMIN")
+                                        .requestMatchers("/agencies/agency-panel").hasAnyRole("AGENCY_ADMIN", "AGENT")
+                                        .requestMatchers("/agencies/add-agent").hasRole("AGENCY_ADMIN")
+                                        .requestMatchers("/agencies/{id}").hasRole("ADMIN")
+                                        .requestMatchers("/users/my-properties").hasAnyRole("AGENT", "AGENCY_ADMIN")
+                                        .requestMatchers("/users/{id}").hasRole("ADMIN")
+                                        .requestMatchers("/properties/add").hasAnyRole("AGENT", "AGENCY_ADMIN")
                                         .anyRequest()
                                         .authenticated()
                 )

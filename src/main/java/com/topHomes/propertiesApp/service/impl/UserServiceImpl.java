@@ -90,6 +90,28 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByEmail(username);
     }
 
+    @Override
+    public Optional<User> getUserByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
+    @Override
+    public User addRoleAndSave(User user) {
+        List<UserRole> roles = new ArrayList<>(user.getRoles());
+        roles.add(userRoleRepository.findByRole(UserRoleEnum.AGENT));
+        user.setRoles(roles);
+        return userRepository.save(user);
+    }
+
+    @Override
+    public User deleteAgent(User user) {
+        List<UserRole> roles = new ArrayList<>(user.getRoles());
+        roles.remove(userRoleRepository.findByRole(UserRoleEnum.AGENT));
+        user.setRoles(roles);
+        user.setAgency(null);
+        return userRepository.save(user);
+    }
+
     private User map(RegisterUserDTO registerUserDTO) {
         User mappedEntity = modelMapper.map(registerUserDTO, User.class);
 

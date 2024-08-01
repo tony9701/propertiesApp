@@ -52,8 +52,7 @@
             <div th:each="agency : ${allAgencies}" class="user-panel">
                 <p class="user-info" th:text="'Name: ' + ${agency.getName()}"></p>
                 <div class="user-actions">
-                    <button class="btn-details" th:attr="data-id=${agency.getId()}">Details</button>
-                    <button class="btn-remove" th:attr="data-id=${agency.getId()}">Remove</button>
+                    <a th:href="@{/agencies/{id}(id=${agency.getId()})}"><button class="btn-details" th:attr="data-id=${agency.getId()}">Details</button></a>
                 </div>
             </div>
         </div>

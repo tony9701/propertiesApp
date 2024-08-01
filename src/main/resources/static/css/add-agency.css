@@ -32,8 +32,8 @@ nav {
 }
 
 .wrapper textarea {
-    resize: none; 
-    
+    resize: none;
+
 }
 
 .action_buttons {
@@ -78,6 +78,13 @@ nav {
     margin-bottom: 20px;
 }
 
+.contact-form p {
+    font-size: 15px;
+    color: brown;
+    margin-top: 15px;
+    font-style: italic;
+}
+
 .contact-form .input-box {
     position: relative;
     width: 100%;
@@ -112,7 +119,7 @@ nav {
 .contact-form i {
     position: absolute;
     right: 20px;
-    top: 50%;
+    top: 30%;
     transform: translateY(-50%);
     font-size: 20px;
     color: black;

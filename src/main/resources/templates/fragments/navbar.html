@@ -19,11 +19,11 @@
             <div class="logo"><a href="/">TopHomes</a></div>
             <ul class="links">
                 <li><a href="/">Home</a></li>
-                <li><a href="">Properties</a></li>
+                <li><a href="/properties/">Properties</a></li>
                 <li><a href="/about-us">About Us</a></li>
                 <li><a href="/contact-us">Contact Us</a></li>
                 <li sec:authorize="hasRole('ADMIN')"><a href="/admin">Admin Panel</a></li>
-                <li sec:authorize="hasRole('AGENCY_ADMIN')"><a href="">Agency Panel</a></li>
+                <li sec:authorize="hasAnyRole('ROLE_AGENT', 'ROLE_AGENCY_ADMIN')"><a href="/agencies/agency-panel">Agency Panel</a></li>
             </ul>
             <div class="action_buttons">
                 <li class="nav-item" sec:authorize="!isAuthenticated()">
