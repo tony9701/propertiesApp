@@ -18,7 +18,7 @@ function scrollToSection(id) {
 }
 
 function confirmDelete(form) {
-    if (confirm("Are you sure you want to delete this property?")) {
+    if (confirm("Are you sure you want to delete?")) {
         // Form submission will continue
         return true;
     } else {

@@ -58,6 +58,9 @@ public class Property extends BaseEntity {
     @ManyToOne(optional = false)
     private Agency agency;
 
+    @ManyToOne(optional = false)
+    private User user;
+
     @ManyToMany(mappedBy = "favouriteProperties", fetch = FetchType.EAGER)
     private List<User> usersWhoFavorite;
 

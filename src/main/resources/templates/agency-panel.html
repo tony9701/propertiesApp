@@ -1,57 +1,95 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml"
+      xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" 
-    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+          integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Poetsen+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/css/styles.css" />
-    <link rel="stylesheet" href="/static/css/navbar-style.css" />
-    <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Poetsen+One&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="/css/admin-panel.css"/>
+    <link rel="stylesheet" href="/css/navbar-style.css"/>
     <script src="/js/main.js"></script>
-    <title>TopHomes</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <title>TopHomes - Agency Panel</title>
 </head>
 <body>
-    <header>
-        <div th:replace="~{fragments/navbar::navbar(activeLink=${''})}"></div>
+<header>
+    <div th:replace="~{fragments/navbar::navbar(activeLink=${''})}"></div>
 
-    </header>
+</header>
 
-    <header th:fragment="navbar(activeLink)">
-        <div class="navbar">
-            <div class="logo"><a href="">TopHomes</a></div>
-            <ul class="links">
-                <li><a href="">Home</a></li>
-                <li><a href="">Properties</a></li>
-                <li><a href="">About Us</a></li>
-                <li><a href="">Contact Us</a></li>
-            </ul>
-            <div class="action_buttons">
-                <a href="" class="action_btn">Register</a>
-                <a href="" class="action_btn">Sign In</a>
-            </div>
-            
-            
-            <div class="toggle_btn">
-                <i class="fa-solid fa-bars"></i>
+<div class="nav-buttons">
+    <button onclick="scrollToSection('users-section')">Users</button>
+    <button onclick="scrollToSection('agencies-section')">Agencies</button>
+    <button onclick="scrollToSection('properties-section')">Properties</button>
+</div>
+
+<h1 class="head-title">Agency Panel - <span th:text="${agency.getName()}"></span></h1>
+<div class="top-buttons">
+    <a th:href="@{/users/{id}/my-properties(id=${user.getId()})}" class="btn-details">My Properties</a>
+    <a href="https://www.example.com" sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_AGENCY_ADMIN')" class="btn-details">Add Agent</a>
+</div>
+<div class="users-wrapper">
+    <div id="users-section" class="users-container">
+        <h1>Agents</h1>
+        <div th:each="agent : ${agency.getAgents()}" class="user-panel">
+            <p class="user-info" th:text="'Email: ' + ${agent.getEmail()}"></p>
+            <div class="user-actions">
+                <a th:href="@{/users/{id}(id=${agent.getId()})}">
+                    <button class="btn-details" th:attr="data-id=${agent.getId()}">Details</button>
+                </a>
+                <form th:action="@{/users/{id}(id=${agent.getId()})}" method="post"
+                      onsubmit="return confirmDelete(this);">
+                    <!-- Hidden input to override HTTP method to DELETE -->
+                    <input type="hidden" name="_method" value="delete">
+
+                    <!-- Button to submit the form -->
+                    <button type="submit" class="btn-remove">
+                        Remove
+                    </button>
+                </form>
             </div>
         </div>
+    </div>
 
-        <div class="dropdown_menu">
-            <li><a href="">Home</a></li>
-            <li><a href="">Properties</a></li>
-            <li><a href="">About Us</a></li>
-            <li><a href="">Contact Us</a></li>
-            <li><a href="" class="action_btn">Register</a></li>
-            <li><a href="" class="action_btn">Sign In</a></li>
+    <div id="agencies-section" class="users-container">
+        <h1>Bookings</h1>
+        <div th:each="booking : ${agency.getBookings()}" class="user-panel">
+            <p class="user-info" th:text="'Name: ' + ${agency.getName()}"></p>
+            <div class="user-actions">
+                <button class="btn-details" th:attr="data-id=${agency.getId()}">Details</button>
+                <button class="btn-remove" th:attr="data-id=${agency.getId()}">Remove</button>
+            </div>
         </div>
-     </header>
+    </div>
 
+    <div id="properties-section" class="users-container">
+        <h1>Properties</h1>
+        <div th:each="property : ${agency.getProperties()}" class="user-panel">
+            <p class="user-info" th:text="${property.getName()}"></p>
+            <div class="user-actions">
+                <a th:href="@{/properties/{id}(id=${property.getId()})}">
+                    <button class="btn-details" th:attr="data-id=${property.getId()}">Details</button>
+                </a>
+                <form th:action="@{/properties/{id}(id=${property.getId()})}" method="post"
+                      onsubmit="return confirmDelete(this);">
+                    <!-- Hidden input to override HTTP method to DELETE -->
+                    <input type="hidden" name="_method" value="delete">
 
-
+                    <!-- Button to submit the form -->
+                    <button type="submit" class="btn-remove">
+                        Remove
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

@@ -46,6 +46,9 @@ public class User extends BaseEntity {
     @OneToMany(mappedBy = "user")
     private List<Booking> bookings;
 
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    private List<Property> properties;
+
     @ManyToMany(
             fetch = FetchType.EAGER
     )

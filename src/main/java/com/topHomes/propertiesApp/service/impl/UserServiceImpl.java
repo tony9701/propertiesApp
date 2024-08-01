@@ -4,15 +4,19 @@ import com.topHomes.propertiesApp.model.dto.RegisterUserDTO;
 import com.topHomes.propertiesApp.model.entity.User;
 import com.topHomes.propertiesApp.model.entity.UserRole;
 import com.topHomes.propertiesApp.model.enums.UserRoleEnum;
+import com.topHomes.propertiesApp.model.user.PropertiesAppUserDetails;
 import com.topHomes.propertiesApp.repository.UserRepository;
 import com.topHomes.propertiesApp.repository.UserRoleRepository;
 import com.topHomes.propertiesApp.service.UserService;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -76,6 +80,14 @@ public class UserServiceImpl implements UserService {
     public List<User> getAllUsers() {
         //TODO make it pageable in future
         return new ArrayList<>(userRepository.findAll());
+    }
+
+    @Override
+    public Optional<User> getCurrentUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Object principal = authentication.getPrincipal();
+        String username = ((PropertiesAppUserDetails) principal).getUsername();
+        return userRepository.findByEmail(username);
     }
 
     private User map(RegisterUserDTO registerUserDTO) {

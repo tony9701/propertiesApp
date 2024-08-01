@@ -5,6 +5,7 @@ import com.topHomes.propertiesApp.model.entity.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public interface UserService {
@@ -15,4 +16,6 @@ public interface UserService {
     boolean isUserRepoEmpty();
 
     List<User> getAllUsers();
+
+    Optional<User> getCurrentUser();
 }

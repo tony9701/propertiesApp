@@ -54,16 +54,18 @@ public class AgencyServiceImpl implements AgencyService {
                     registerAgencyDTO.getPassword()
             ));
 
-        //get the new user(the agency) and set its roles to AGENCY_ADMIN
+
+        //save the agency in DB
+        Agency agency = agencyRepository.save(map(registerAgencyDTO));
+
+        //get the new user(the agency) and set its roles to AGENCY_ADMIN and set the Agency
         User user = userRepository.findByEmail(registerAgencyDTO.getEmail()).get();
         List<UserRole> roles = new ArrayList<>(user.getRoles());
         UserRole role = userRoleRepository.findByRole(UserRoleEnum.AGENCY_ADMIN);
         roles.add(role);
         user.setRoles(roles);
+        user.setAgency(agency);
         userRepository.save(user);
-
-        //save the agency in DB
-        agencyRepository.save(map(registerAgencyDTO));
     }
 
     @Override

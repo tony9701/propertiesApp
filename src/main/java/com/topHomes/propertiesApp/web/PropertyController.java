@@ -49,7 +49,7 @@ public class PropertyController {
 
         if (byId.isPresent()) {
             Property property = byId.get();
-            propertyRepository.deleteById(property.getId());
+            propertyRepository.delete(property);
             return "redirect:/admin";
         }
 

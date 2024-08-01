@@ -26,6 +26,7 @@
         <button onclick="scrollToSection('properties-section')">Properties</button>
     </div>
 
+    <h1 class="head-title">Admin Panel</h1>
     <div class="users-wrapper">
         <div id="users-section" class="users-container">
             <h1>Users</h1>
@@ -33,7 +34,15 @@
                 <p class="user-info" th:text="'Email: ' + ${user.getEmail()}"></p>
                 <div class="user-actions">
                     <a th:href="@{/users/{id}(id=${user.getId()})}"><button class="btn-details" th:attr="data-id=${user.getId()}">Details</button></a>
-                    <button class="btn-remove" th:attr="data-id=${user.getId()}">Remove</button>
+                    <form th:action="@{/users/{id}(id=${user.getId()})}" method="post" onsubmit="return confirmDelete(this);">
+                        <!-- Hidden input to override HTTP method to DELETE -->
+                        <input type="hidden" name="_method" value="delete">
+
+                        <!-- Button to submit the form -->
+                        <button type="submit" class="btn-remove">
+                            Remove
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>

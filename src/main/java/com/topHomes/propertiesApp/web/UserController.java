@@ -2,6 +2,7 @@ package com.topHomes.propertiesApp.web;
 
 import com.topHomes.propertiesApp.model.entity.Address;
 import com.topHomes.propertiesApp.model.entity.User;
+import com.topHomes.propertiesApp.model.enums.UserRoleEnum;
 import com.topHomes.propertiesApp.repository.UserRepository;
 import com.topHomes.propertiesApp.service.UserService;
 import org.springframework.stereotype.Controller;
@@ -13,15 +14,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/users")
 public class UserController {
 
     private final UserRepository userRepository;
+    private final UserService userService;
 
-    public UserController(UserRepository userRepository) {
+    public UserController(UserRepository userRepository, UserService userService) {
         this.userRepository = userRepository;
+        this.userService = userService;
     }
 
     @GetMapping("/{id}")
@@ -30,7 +34,11 @@ public class UserController {
 
         if (byId.isPresent()) {
             User user = byId.get();
+            String roles = user.getRoles().stream()
+                    .map(role -> role.getRole().name())
+                    .collect(Collectors.joining(", "));
             model.addAttribute("user", user);
+            model.addAttribute("roles", roles);
             return "user-details";
         }
 
@@ -42,10 +50,23 @@ public class UserController {
         Optional<User> byId = userRepository.findById(id);
         if (byId.isPresent()) {
             User user = byId.get();
+
+            if (user.getRoles().stream().anyMatch(role -> role.getRole().equals((UserRoleEnum.ADMIN)))) {
+                return "not-allowed";
+            }
+
             userRepository.delete(user);
-            return "redirect:/";
+            return "redirect:/admin";
         }
 
         return "user-not-found";
+    }
+
+    @GetMapping("/{id}/my-properties")
+    public String myProperties(@PathVariable Long id, Model model) {
+
+        User user = userService.getCurrentUser().get();
+        model.addAttribute("user", user);
+        return "my-properties";
     }
 }

@@ -10,6 +10,7 @@ import com.topHomes.propertiesApp.repository.UserRepository;
 import com.topHomes.propertiesApp.service.AddressService;
 import com.topHomes.propertiesApp.service.PropertyPhotoService;
 import com.topHomes.propertiesApp.service.PropertyService;
+import com.topHomes.propertiesApp.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PropertyServiceImpl implements PropertyService {
@@ -25,14 +27,14 @@ public class PropertyServiceImpl implements PropertyService {
     private final ModelMapper modelMapper;
     private final AddressService addressService;
     private final PropertyPhotoService propertyPhotoService;
-    private final UserRepository userRepository;
+    private final UserService userService;
 
-    public PropertyServiceImpl(PropertyRepository propertyRepository, ModelMapper modelMapper, AddressRepository addressRepository, AddressService addressService, PropertyPhotoService propertyPhotoService, UserRepository userRepository) {
+    public PropertyServiceImpl(PropertyRepository propertyRepository, ModelMapper modelMapper, AddressRepository addressRepository, AddressService addressService, PropertyPhotoService propertyPhotoService, UserService userService) {
         this.propertyRepository = propertyRepository;
         this.modelMapper = modelMapper;
         this.addressService = addressService;
         this.propertyPhotoService = propertyPhotoService;
-        this.userRepository = userRepository;
+        this.userService = userService;
     }
 
     @Override
@@ -61,11 +63,8 @@ public class PropertyServiceImpl implements PropertyService {
 
         property.setAddress(address);
 
-        //get the user and agency
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        Object principal = authentication.getPrincipal();
-        String username = ((PropertiesAppUserDetails) principal).getUsername();
-        User user = userRepository.findByEmail(username).get();
+        //get the user and agency TODO check if works
+        User user = userService.getCurrentUser().get();
 
         boolean isAgent = user.getRoles().stream().anyMatch(role -> role.getRole().name().equals("AGENT"));
         boolean isAgentAdmin = user.getRoles().stream().anyMatch(role -> role.getRole().name().equals("AGENCY_ADMIN"));
@@ -75,6 +74,8 @@ public class PropertyServiceImpl implements PropertyService {
         if (isAgent || isAgentAdmin || isAdmin) {
             Agency agency = user.getAgency();
             property.setAgency(agency);
+            property.setUser(user);
+            //TODO add user
         }
 
         return property;
