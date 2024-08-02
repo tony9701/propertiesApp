@@ -27,4 +27,6 @@ spring:
     hiddenmethod:
       filter:
         enabled: true
-
+message:
+  api:
+    base-url: "http://localhost:8081"
