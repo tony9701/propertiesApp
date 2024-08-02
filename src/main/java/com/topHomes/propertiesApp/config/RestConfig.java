@@ -7,7 +7,7 @@ import org.springframework.web.client.RestClient;
 public class RestConfig {
 
     @Bean()
-    public RestClient offersRestClient(MessageApiConfig messageApiConfig) {
+    public RestClient messageRestClient(MessageApiConfig messageApiConfig) {
         return RestClient
                 .builder()
                 .baseUrl(messageApiConfig.getBaseUrl())
