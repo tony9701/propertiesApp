@@ -3,41 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" 
-    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+          integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Poetsen+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/contact-us.css" />
-    <link rel="stylesheet" href="/css/navbar-style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Poetsen+One&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="/css/contact-us.css"/>
+    <link rel="stylesheet" href="/css/navbar-style.css"/>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <script src="/js/main.js"></script>
     <title>TopHomes - Contact Us</title>
 </head>
 <body>
-    <header>
-        <div th:replace="~{fragments/navbar::navbar(activeLink=${''})}"></div>
-    </header>
+<header>
+    <div th:replace="~{fragments/navbar::navbar(activeLink=${''})}"></div>
+</header>
 
+<form th:method="post" th:action="@{/contact-us}">
     <div class="contact-form">
         <div class="wrapper">
             <h1>Contact Us</h1>
             <div class="input-box">
-                <input type="text" placeholder="Your Name" required>
+                <input type="text" name="senderName" placeholder="Your Name" required>
                 <i class="fa-solid fa-user"></i>
             </div>
             <div class="input-box">
-                <input type="email" placeholder="Your Email" required>
+                <input type="email" name="senderEmail" placeholder="Your Email" required>
                 <i class="fa-solid fa-envelope"></i>
             </div>
             <div class="input-box">
-                <textarea placeholder="Your Message" required></textarea>
+                <textarea name="message" placeholder="Your Message" required></textarea>
                 <i class="fa-solid fa-comment"></i>
             </div>
             <button type="submit" class="btn-submit">Send Message</button>
         </div>
     </div>
-
+</form>
 
 </body>
 </html>
