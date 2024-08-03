@@ -46,7 +46,6 @@ header {
     justify-content: flex-start;
     gap: 1rem;
     padding: 1rem;
-    border: solid 2px black;
     width: 25rem;
     margin: 1rem 1rem;
 }

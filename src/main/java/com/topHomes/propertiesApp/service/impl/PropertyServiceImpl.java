@@ -3,6 +3,7 @@ package com.topHomes.propertiesApp.service.impl;
 import com.topHomes.propertiesApp.model.dto.AddPropertyDTO;
 import com.topHomes.propertiesApp.model.entity.*;
 
+import com.topHomes.propertiesApp.model.enums.TransactionTypeEnum;
 import com.topHomes.propertiesApp.model.user.PropertiesAppUserDetails;
 import com.topHomes.propertiesApp.repository.AddressRepository;
 import com.topHomes.propertiesApp.repository.PropertyRepository;
@@ -50,6 +51,16 @@ public class PropertyServiceImpl implements PropertyService {
     @Override
     public List<Property> getAllProperties() {
        return propertyRepository.findAll();
+    }
+
+    @Override
+    public List<Property> getPropertiesBuy() {
+        return propertyRepository.findAllByTransactionType(TransactionTypeEnum.SELL);
+    }
+
+    @Override
+    public List<Property> getPropertiesRent() {
+        return propertyRepository.findAllByTransactionType(TransactionTypeEnum.RENT);
     }
 
     private Property map(AddPropertyDTO addPropertyDTO) {

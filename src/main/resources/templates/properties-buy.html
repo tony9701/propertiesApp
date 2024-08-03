@@ -18,34 +18,40 @@
     <title>TopHomes</title>
 </head>
 <body>
-    <header>
-        <div th:replace="~{fragments/navbar::navbar(activeLink=${''})}"></div>
-    </header>
+<header>
+    <div th:replace="~{fragments/navbar::navbar(activeLink=${''})}"></div>
+</header>
 
-    <div class="container">
-        <h2>All Properties</h2>
-        <div class="properties">
-            <!-- This block should be repeated for each property -->
-            <div class="property">
-                <div class="card-img-top-wrapper">
-                    <img class="card-img-top" src="/" alt="Property image">
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">TODO: Property Type - Location</h5>
-                </div>
-                <ul class="property-details">
-                    <li class="list-group-item">
-                        <div class="card-text">• Size: <span>TODO: Size</span></div>
-                        <div class="card-text">• Price: <span>TODO: Price</span></div>
-                        <div class="card-text">• Description: <span>TODO: Description</span></div>
 
-                    </li>
-                </ul>
-                <div class="card-body">
-                    <a class="card-link" href="#">Details</a>
+<h1 class="head-title">Properties</h1>
+<div class="property-wrapper">
+    <div id="properties-section" class="property-container">
+        <div th:each="property : ${properties}" class="property-panel">
+            <div class="property-image">
+                <img th:src="${property.getPropertyPhotos().getFirst().getUrl()}" alt="Property Image">
+            </div>
+            <div class="property-actions">
+                <p class="property-info" th:text="${property.getName()}"></p>
+                <p class="property-info" th:text="${property.getPrice()}"></p>
+                <p class="property-info" th:text="${property.getSize()}"></p>
+                <div class="buttons">
+                <a th:href="@{/properties/{id}(id=${property.getId()})}">
+                    <button class="btn-details" th:attr="data-id=${property.getId()}">Details</button>
+                </a>
+                <form th:action="@{/properties/{id}(id=${property.getId()})}" method="post"
+                      onsubmit="return confirmDelete(this);">
+                    <!-- Hidden input to override HTTP method to DELETE -->
+                    <input type="hidden" name="_method" value="delete">
+
+                    <!-- Button to submit the form -->
+                    <button type="submit" class="btn-remove">
+                        Remove
+                    </button>
+                </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </body>
 </html>

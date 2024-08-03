@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,7 +36,7 @@
             <span th:text="${user.getAddress().getCity()}">City</span>,
             <span th:text="${user.getAddress().getCountry()}">Country</span>
         </p>
-        <p>Roles: <span th:text="${roles}">Roles</span></p>
+        <p sec:authorize="hasRole('ROLE_ADMIN')">Roles: <span th:text="${roles}">Roles</span></p>
 
         <a href="javascript:history.back()" class="btn-back">Back</a>
     </div>

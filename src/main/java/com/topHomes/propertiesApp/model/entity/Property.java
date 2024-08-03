@@ -73,5 +73,14 @@ public class Property extends BaseEntity {
     public void addPropertyPhoto(PropertyPhoto photo) {
         this.propertyPhotos.add(photo);
     }
+
+
+    public String getPrice() {
+        return String.format("%.0f EUR", price);
+    }
+
+    public String getSize() {
+        return String.format("%.0f m2", size);
+    }
 }
 

@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Getter
 @Setter
@@ -17,4 +18,9 @@ public class MessageDTO {
     private String senderEmail;
     private String message;
     private LocalDateTime timestamp;
+
+    public String getFormattedTimestamp() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
+        return this.timestamp.format(formatter);
+    }
 }

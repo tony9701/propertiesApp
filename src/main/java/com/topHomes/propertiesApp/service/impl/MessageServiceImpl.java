@@ -59,7 +59,7 @@ public class MessageServiceImpl implements MessageService {
     public void deleteMessageById(Long id) {
         messageRestClient
                 .delete()
-                .uri("http://localhost:8081/admin/messages/{id}")
+                .uri("http://localhost:8081/admin/messages/{id}", id)
                 .retrieve();
     }
 }

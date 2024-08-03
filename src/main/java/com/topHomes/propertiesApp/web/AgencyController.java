@@ -138,6 +138,10 @@ public class AgencyController {
         if (byId.isPresent()) {
             User user = byId.get();
 
+            if (user.getAgency() == null) {
+                return "user-not-found";
+            }
+
             if (!userService.getCurrentUser().get().getRoles().stream().anyMatch(r -> r.getRole().equals(UserRoleEnum.ADMIN))) {
                 if (user.getAgency() != userService.getCurrentUser().get().getAgency()) {
                     return "redirect:/agencies/agency-panel";

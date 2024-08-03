@@ -29,7 +29,7 @@ public class SecurityConfig {
                                                 "/properties/buy", "/properties/rent", "/properties/", "/contact-us",
                                                 "/about-us", "/properties").permitAll()
                                         // all other URL-s should be authenticated.
-                                        .requestMatchers("/admin").hasRole("ADMIN")
+                                        .requestMatchers("/admin/**").hasRole("ADMIN")
                                         .requestMatchers("/agencies/agency-panel").hasAnyRole("AGENCY_ADMIN", "AGENT")
                                         .requestMatchers("/agencies/add-agent").hasRole("AGENCY_ADMIN")
                                         .requestMatchers("/agencies/{id}").hasRole("ADMIN")

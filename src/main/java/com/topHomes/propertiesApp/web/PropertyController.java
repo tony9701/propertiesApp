@@ -15,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -72,7 +73,18 @@ public class PropertyController {
     }
 
     @GetMapping("/buy")
-    public String buy() {
+    public String buy(Model model) {
+        List<Property> propertiesBuy = propertyService.getPropertiesBuy();
+        model.addAttribute("properties", propertiesBuy);
+
+        return "properties-buy";
+    }
+
+    @GetMapping("/rent")
+    public String rent(Model model) {
+        List<Property> propertiesRent = propertyService.getPropertiesRent();
+        model.addAttribute("properties", propertiesRent);
+
         return "properties-buy";
     }
 

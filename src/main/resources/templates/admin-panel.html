@@ -24,6 +24,7 @@
         <button onclick="scrollToSection('users-section')">Users</button>
         <button onclick="scrollToSection('agencies-section')">Agencies</button>
         <button onclick="scrollToSection('properties-section')">Properties</button>
+        <button onclick="scrollToSection('messages-section')">Messages</button>
     </div>
 
     <h1 class="head-title">Admin Panel</h1>
@@ -64,6 +65,26 @@
                 <div class="user-actions">
                     <a th:href="@{/properties/{id}(id=${property.getId()})}"><button class="btn-details" th:attr="data-id=${property.getId()}">Details</button></a>
                     <form th:action="@{/properties/{id}(id=${property.getId()})}" method="post" onsubmit="return confirmDelete(this);">
+                        <!-- Hidden input to override HTTP method to DELETE -->
+                        <input type="hidden" name="_method" value="delete">
+
+                        <!-- Button to submit the form -->
+                        <button type="submit" class="btn-remove">
+                            Remove
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="message-section" class="users-container">
+            <h1>Messages</h1>
+            <div th:each="message : ${allMessages}" class="user-panel">
+                <p class="user-info">Message from: <span th:text="${message.getSenderEmail()}"></span></p>
+                <p class="user-info">Date: <span th:text="${message.getFormattedTimestamp()}"></span></p>
+                <div class="user-actions">
+                    <a th:href="@{/admin/message/{id}(id=${message.getId()})}"><button class="btn-details" th:attr="data-id=${message.getId()}">Details</button></a>
+                    <form th:action="@{/admin/message/{id}(id=${message.getId()})}" method="post" onsubmit="return confirmDelete(this);">
                         <!-- Hidden input to override HTTP method to DELETE -->
                         <input type="hidden" name="_method" value="delete">
 

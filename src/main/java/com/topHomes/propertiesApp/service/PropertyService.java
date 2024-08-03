@@ -11,4 +11,8 @@ public interface PropertyService {
     void addProperty(AddPropertyDTO addPropertyDTO);
 
     List<Property> getAllProperties();
+
+    List<Property> getPropertiesBuy();
+
+    List<Property> getPropertiesRent();
 }
