@@ -15,7 +15,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="/js/main.js"></script>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-    <title>TopHomes - User</title>
+    <title>TopHomes - Message</title>
 
 </head>
 <body>
@@ -29,8 +29,8 @@
         <h2>Message Details</h2>
         <p>Name: <span th:text="${message.getSenderName()}">First Name</span></p>
         <p>Email: <span th:text="${message.getSenderEmail()}">Email</span></p>
-        <p>Time: <span th:text="${message.getFormattedTimestamp()}">Street</span></p>
-        <p>Message: <span th:text="${message.getMessage()}">Roles</span></p>
+        <p>Time: <span th:text="${message.getFormattedTimestamp()}">Time</span></p>
+        <p>Message: <span th:text="${message.getMessage()}">Message</span></p>
 
         <a href="javascript:history.back()" class="btn-back">Back</a>
     </div>

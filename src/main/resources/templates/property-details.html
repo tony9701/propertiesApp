@@ -15,7 +15,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="/js/main.js"></script>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-    <title>TopHomes - User</title>
+    <title>TopHomes - Property Details</title>
 
 </head>
 <body>
@@ -28,16 +28,16 @@
     <div class="user-info">
         <img th:src="${property.getPropertyPhotos().getFirst().getUrl()}" class="property-image" alt="Property Image">
         <div class="details">
-            <h2><span th:text="${property.getName()}"></span></h2>
-            <p>Size: <span th:text="${property.getSize()}"></span>m2</p>
-            <p>Price: <span th:text="${property.getPrice()}"></span>$</p>
+            <h2><span th:text="${property.getName()}">Name</span></h2>
+            <p>Size: <span th:text="${property.getSize()}">Size</span></p>
+            <p>Price: <span th:text="${property.getPrice()}">Price</span></p>
             <p th:if="${property.getAddress() != null}">Address:
                 <span th:text="${property.getAddress().getStreet()}">Street</span>
                 <span th:text="${property.getAddress().getNumber()}">Number</span>,
                 <span th:text="${property.getAddress().getCity()}">City</span>,
                 <span th:text="${property.getAddress().getCountry()}">Country</span>
             </p>
-            <p><span th:text="${property.getDescription()}"></span></p>
+            <p><span th:text="${property.getDescription()}">Description</span></p>
             <a href="javascript:history.back()" class="btn-back">Back</a>
         </div>
     </div>

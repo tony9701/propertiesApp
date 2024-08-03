@@ -42,7 +42,6 @@ header {
 
 .property-image {
     width: 660px; /* Fixed width of the image */
-    height: 495px; /* Fixed height of the image */
     object-fit: contain; /* Maintain aspect ratio */
     margin-right: 0;
     justify-content: center;
@@ -147,4 +146,13 @@ header {
         gap: 150px;
     }
 
+}
+
+@media(max-width: 700px) {
+    .property-image {
+        width: 460px; /* Fixed width of the image */
+        object-fit: contain; /* Maintain aspect ratio */
+        margin-right: 0;
+        justify-content: center;
+    }
 }

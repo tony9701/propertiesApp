@@ -2,18 +2,15 @@ package com.topHomes.propertiesApp.web;
 
 import com.topHomes.propertiesApp.model.dto.AddPropertyDTO;
 import com.topHomes.propertiesApp.model.entity.Property;
-import com.topHomes.propertiesApp.model.entity.User;
 import com.topHomes.propertiesApp.model.enums.UserRoleEnum;
 import com.topHomes.propertiesApp.repository.PropertyRepository;
 import com.topHomes.propertiesApp.service.PropertyService;
 import com.topHomes.propertiesApp.service.UserService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 import java.util.Optional;
@@ -77,7 +74,7 @@ public class PropertyController {
         List<Property> propertiesBuy = propertyService.getPropertiesBuy();
         model.addAttribute("properties", propertiesBuy);
 
-        return "properties-buy";
+        return "properties-buy-rent";
     }
 
     @GetMapping("/rent")
@@ -85,7 +82,7 @@ public class PropertyController {
         List<Property> propertiesRent = propertyService.getPropertiesRent();
         model.addAttribute("properties", propertiesRent);
 
-        return "properties-buy";
+        return "properties-buy-rent";
     }
 
     @GetMapping("/add")
