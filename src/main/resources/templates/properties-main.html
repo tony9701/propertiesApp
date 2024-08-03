@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -48,6 +48,15 @@
                 quickly.
             </p>
             <a href="/properties/rent" class="btn-register">Browse Rentals</a>
+        </section>
+
+        <section sec:authorize="hasAnyRole('AGENCY_ADMIN', 'AGENT')" class="option">
+            <h2 class="option-title">Add Property</h2>
+
+            <p>
+                "Add a new property to your listings. Fill in the details and showcase the property to potential buyers."
+            </p>
+            <a href="/properties/add" class="btn-register">Add Property</a>
         </section>
     </main>
 </div>
