@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Poetsen+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/admin-panel.css" />
+    <link rel="stylesheet" href="/css/properties-panels.css"/>
     <link rel="stylesheet" href="/css/navbar-style.css" />
     <script src="/js/main.js"></script>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
@@ -60,19 +61,29 @@
 
         <div id="properties-section" class="users-container">
             <h1>Properties</h1>
-            <div th:each="property : ${allProperties}" class="user-panel">
-                <p class="user-info" th:text="${property.getName()}"></p>
-                <div class="user-actions">
-                    <a th:href="@{/properties/{id}(id=${property.getId()})}"><button class="btn-details" th:attr="data-id=${property.getId()}">Details</button></a>
-                    <form th:action="@{/properties/{id}(id=${property.getId()})}" method="post" onsubmit="return confirmDelete(this);">
-                        <!-- Hidden input to override HTTP method to DELETE -->
-                        <input type="hidden" name="_method" value="delete">
+            <div th:each="property : ${allProperties}" class="property-panel">
+                <div class="property-image">
+                    <img th:src="${property.getPropertyPhotos().getFirst().getUrl()}" alt="Property Image">
+                </div>
+                <div class="property-actions">
+                    <p class="property-info" th:text="${property.getName()}"></p>
+                    <p class="property-info" th:text="${property.getPrice()}"></p>
+                    <p class="property-info" th:text="${property.getSize()}"></p>
+                    <div class="buttons">
+                        <a th:href="@{/properties/{id}(id=${property.getId()})}">
+                            <button class="btn-details" th:attr="data-id=${property.getId()}">Details</button>
+                        </a>
+                        <form sec:authorize="hasRole('ROLE_ADMIN')" th:action="@{/properties/{id}(id=${property.getId()})}" method="post"
+                              onsubmit="return confirmDelete(this);">
+                            <!-- Hidden input to override HTTP method to DELETE -->
+                            <input type="hidden" name="_method" value="delete">
 
-                        <!-- Button to submit the form -->
-                        <button type="submit" class="btn-remove">
-                            Remove
-                        </button>
-                    </form>
+                            <!-- Button to submit the form -->
+                            <button type="submit" class="btn-remove">
+                                Remove
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,0 +1,301 @@
+/* Apply existing styles from the provided CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    height: 100vh;
+    background-color: #d5e4eb;
+    background-image: url("/images/bg12.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+.head-title{
+    text-align: center;
+    margin-top: 100px;
+    font-size: 50px;
+}
+
+header {
+    position: relative;
+    padding: 0 2rem;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.property-wrapper {
+    display: flex;
+    justify-content: space-around; /* Adjusts spacing between containers */
+    padding: 1rem;
+}
+
+.property-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    width: 50rem;
+    margin: 1rem 1rem;
+}
+
+.top-buttons {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 1rem;
+    font-family: "Open Sans", sans-serif;
+}
+
+
+.property-panel {
+    background: rgba(113, 135, 138, 0.6); /* Slight background to make the panel stand out */
+    padding: 1rem; /* Smaller padding for a more compact panel */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 420px; /* Smaller width for more compact panels */
+    text-align: center;
+    display: flex;
+    justify-content: center; /*maybe delete */
+    align-items: center;
+    margin: 1rem 0; /* Margin for spacing between panels */
+}
+
+
+.property-info {
+    font-size: 1.2rem;
+    color: black;
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+}
+
+.property-image {
+    flex: 0 0 auto; /* Ensure the image does not shrink */
+    margin-right: 1.5rem; /* Space between image and text */
+}
+
+.property-image img {
+    max-width: 180px; /* Set maximum width for the image */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Optional: round the corners of the image */
+}
+
+.property-actions {
+    display: flex;
+    gap: 0.2rem; /* Smaller gap between buttons */
+    /*align-items: center;*/
+    flex-direction: column; /* Stack property details vertically */
+    align-items: flex-start; /* Align items to the start */
+}
+
+.property-actions .buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.nav-buttons {
+    display: none; /* Hidden by default */
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: transparent;
+    z-index: 1000;
+    margin-top: 5.5rem;
+    margin-left: 2rem;
+}
+
+.nav-buttons button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    background-color: #3D0C11;
+    color: #fff;
+}
+
+.nav-buttons button:hover {
+    background-color: #5A0E15;
+}
+
+.nav-buttons button:active {
+    transform: scale(0.95);
+}
+
+.btn-details, .btn-remove {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8rem; /* Smaller font size for buttons */
+}
+
+.btn-details {
+    background-color: #3D0C11;
+    color: #fff;
+}
+
+.btn-remove {
+    background-color: #B00020;
+    color: #fff;
+}
+
+.btn-details:hover {
+    background-color: #5A0E15;
+    transform: scale(1.05);
+}
+
+.btn-remove:hover {
+    background-color: #D32F2F;
+    transform: scale(1.05);
+}
+
+.btn-details:active, .btn-remove:active {
+    transform: scale(0.95);
+}
+
+
+@media(max-width: 1250px) {
+    .property-image img {
+        max-width: 120px; /* Set maximum width for the image */
+    }
+
+    .property-panel {
+        padding: 1rem; /* Smaller padding for a more compact panel */
+        width: 350px; /* Smaller width for more compact panels */
+        margin: 1rem 0; /* Margin for spacing between panels */
+    }
+
+    .users-container {
+        padding: 0;
+    }
+
+}
+
+
+@media(max-width: 1050px) {
+    .property-image img {
+        max-width: 100px; /* Set maximum width for the image */
+    }
+
+    .property-panel {
+        padding: 1rem; /* Smaller padding for a more compact panel */
+        width: 300px; /* Smaller width for more compact panels */
+        margin: 1rem 0; /* Margin for spacing between panels */
+    }
+
+    .property-info {
+        font-size: 1.1rem;
+    }
+}
+
+@media(max-width: 992px) {
+    .property-image {
+        flex: 0 0 auto; /* Ensure the image does not shrink */
+        margin-right: 5rem; /* Space between image and text */
+    }
+
+    .property-image img {
+        max-width: 200px; /* Set maximum width for the image */
+    }
+
+    .property-wrapper {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .property-container {
+        width: 70%; /* Adjust width to fit within the parent container */
+        margin: 10rem 0; /* Adjust margin for vertical spacing */
+    }
+
+    .property-panel {
+        width: 100%; /* Adjust width to fit within the users-container */
+    }
+
+    .nav-buttons {
+        display: flex; /* Show the navigation buttons on smaller screens */
+    }
+}
+
+@media(max-width: 800px) {
+    .property-image {
+        margin-right: 2.5rem; /* Space between image and text */
+    }
+
+    .property-image img {
+        max-width: 200px; /* Set maximum width for the image */
+    }
+}
+
+@media(max-width: 640px) {
+    .property-image {
+        margin-right: 1.5rem; /* Space between image and text */
+    }
+
+    .property-image img {
+        max-width: 150px; /* Set maximum width for the image */
+    }
+
+    .property-info {
+        font-size: 1rem;
+    }
+
+    .buttons {
+        transform: scale(0.85);
+    }
+}
+
+@media(max-width: 560px) {
+    .property-image {
+        margin-right: 1rem; /* Space between image and text */
+    }
+
+    .property-image img {
+        max-width: 120px; /* Set maximum width for the image */
+    }
+
+    .property-info {
+        font-size: 0.9rem;
+    }
+
+    .buttons {
+        transform: scale(0.8);
+    }
+}
+
+@media(max-width: 460px) {
+    .property-image {
+        margin-right: 0.5rem; /* Space between image and text */
+    }
+
+    .property-image img {
+        max-width: 70px; /* Set maximum width for the image */
+    }
+
+    .property-info {
+        font-size: 0.8rem;
+    }
+
+    .buttons {
+        transform: scale(0.7);
+    }
+}
