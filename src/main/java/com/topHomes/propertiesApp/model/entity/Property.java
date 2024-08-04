@@ -21,7 +21,7 @@ import java.util.List;
 public class Property extends BaseEntity {
 
     @NotBlank
-    @Size(min = 5, max = 100)
+    @Size(min = 3, max = 100)
     private String name;
 
     @Enumerated(EnumType.STRING)

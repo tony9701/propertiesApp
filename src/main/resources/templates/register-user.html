@@ -12,8 +12,10 @@
           rel="stylesheet">
     <link rel="stylesheet" href="/css/register-styles.css"/>
     <link rel="stylesheet" href="/css/navbar-style.css"/>
+    <link rel="stylesheet" href="/css/validation.css"/>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="/js/main.js"></script>
+    <script src="/js/validation.js"></script>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <title>TopHomes - Register User</title>
 </head>
@@ -23,42 +25,48 @@
 
 </header>
 
-<form th:method="post"
+<form onsubmit="return validateFormRegisterUser()"
+      th:method="post"
       th:action="@{/user-register}"
       th:object="${registerUserDTO}">
     <div class="register-form">  <!--Changed-->
         <div class="wrapper">
             <h1>Register a User</h1>
             <div class="input-box">
-                <input type="text" th:field="*{firstName}" placeholder="First Name"
+                <input type="text" id="first-name" th:field="*{firstName}" placeholder="First Name"
                        required>
                 <i class='bx bxs-user'></i>
+                <span id="first-name-error" class="error-message"></span>
             </div>
             <div class="input-box">
-                <input type="text" th:field="*{lastName}" placeholder="Last Name"
+                <input type="text" id="last-name" th:field="*{lastName}" placeholder="Last Name"
                        required>
                 <i class='bx bxs-user'></i>
+                <span id="last-name-error" class="error-message"></span>
             </div>
             <div class="input-box">
-                <input type="text" th:field="*{email}" placeholder="Email"
+                <input type="text" id="email" th:field="*{email}" placeholder="Email"
                        required>
                 <i class="fa-solid fa-envelope"></i>
+                <span id="email-error" class="error-message"></span>
             </div>
             <div class="input-box">
-                <input type="password" th:field="*{password}" placeholder="Create Password"
+                <input type="password" id="password" th:field="*{password}" placeholder="Create Password"
                        required>
                 <i class='bx bxs-lock-alt'></i>
+                <span id="password-error" class="error-message"></span>
             </div>
             <div class="input-box">
-                <input type="password" th:field="*{confirmPassword}" placeholder="Confirm Password"
+                <input type="password" id="confirm-password" th:field="*{confirmPassword}" placeholder="Confirm Password"
                        required>
                 <i class='bx bxs-lock-alt'></i>
+                <span id="confirm-password-error" class="error-message"></span>
             </div>
 
             <button type="submit" class="btn-submit">Register</button>
             <div class="sign-in-link"> <!--Changed-->
                 <p>Already has an account?
-                    <a href="">Sign in</a></p>
+                    <a href="/login">Sign in</a></p>
             </div>
         </div>
     </div>

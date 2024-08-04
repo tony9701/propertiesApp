@@ -12,8 +12,10 @@
           rel="stylesheet">
     <link rel="stylesheet" href="/css/add-agency.css"/>
     <link rel="stylesheet" href="/css/navbar-style.css"/>
+    <link rel="stylesheet" href="/css/validation.css"/>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <script src="/js/main.js"></script>
+    <script src="/js/validation.js"></script>
     <title>TopHomes - Add Agent</title>
 </head>
 <body>
@@ -24,12 +26,14 @@
 
 <div class="contact-form">
     <div class="wrapper">
-        <form th:method="post"
+        <form   onsubmit="return validateFormAddAgent()"
+                th:method="post"
                 th:action="@{/agencies/add-agent}">
             <h1>Add Agent</h1>
             <div class="input-box">
-                <input type="email" name="email" placeholder="User Email" required>
+                <input type="email" id="email" name="email" placeholder="User Email" required>
                 <i class="fa-solid fa-envelope"></i>
+                <span id="email-error" class="error-message"></span>
                 <p>The agent you want to add has to be already registered as a user!</p>
             </div>
             <button type="submit" class="btn-submit">Add Agent</button>
