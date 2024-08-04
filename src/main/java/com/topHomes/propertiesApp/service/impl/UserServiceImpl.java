@@ -59,7 +59,7 @@ public class UserServiceImpl implements UserService {
                     "admin@admin.com",
                     "admin",
                     "admin",
-                    "admin"
+                    "admin12"
             ));
         }
 
