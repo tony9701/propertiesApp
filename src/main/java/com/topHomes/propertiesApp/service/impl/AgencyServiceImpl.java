@@ -94,6 +94,8 @@ public class AgencyServiceImpl implements AgencyService {
         if (user.getRoles().stream().anyMatch(r -> r.getRole().equals(UserRoleEnum.AGENT)) ||
                 user.getRoles().stream().anyMatch(r -> r.getRole().equals(UserRoleEnum.AGENCY_ADMIN))) {
             throw new UserAlreadyExistsException("The user is already an AGENT");
+        } else if (user.getRoles().stream().anyMatch(r -> r.getRole().equals(UserRoleEnum.ADMIN))) {
+            throw new UserAlreadyExistsException("You cannot add an ADMIN to the Agency");
         }
 
         //get current agency
