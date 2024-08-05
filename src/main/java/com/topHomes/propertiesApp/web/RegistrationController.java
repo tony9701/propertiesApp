@@ -41,11 +41,12 @@ public class RegistrationController {
     }
 
     @PostMapping("/user-register")
-    public String userRegisterDo(@Valid RegisterUserDTO registerUserDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+    public String userRegisterDo(@Valid RegisterUserDTO registerUserDTO, RedirectAttributes redirectAttributes) {
 
         try {
             userService.registerUser(registerUserDTO);
         } catch (UserAlreadyExistsException e) {
+            redirectAttributes.addFlashAttribute("registerUserDTO", registerUserDTO);
             redirectAttributes.addFlashAttribute("isProblem", true);
             return "redirect:/user-register";
         }
@@ -63,9 +64,15 @@ public class RegistrationController {
     }
 
     @PostMapping("/agency-register")
-    public String agencyRegisterDo(@Valid RegisterAgencyDTO registerAgencyDTO) {
-        agencyService.registerAgency(registerAgencyDTO);
+    public String agencyRegisterDo(@Valid RegisterAgencyDTO registerAgencyDTO, RedirectAttributes redirectAttributes) {
 
-        return "/login";
+        try {
+            agencyService.registerAgency(registerAgencyDTO);
+        } catch (UserAlreadyExistsException e) {
+            redirectAttributes.addFlashAttribute("registerAgencyDTO", registerAgencyDTO);
+            redirectAttributes.addFlashAttribute("isProblem", true);
+            return "redirect:/agency-register";
+        }
+        return "redirect:/login";
     }
 }

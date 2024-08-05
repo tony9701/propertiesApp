@@ -1,5 +1,6 @@
 package com.topHomes.propertiesApp.service;
 
+import com.topHomes.propertiesApp.model.dto.AddAgentDTO;
 import com.topHomes.propertiesApp.model.dto.RegisterAgencyDTO;
 import com.topHomes.propertiesApp.model.entity.Agency;
 import org.springframework.stereotype.Service;
@@ -13,4 +14,6 @@ public interface AgencyService {
     List<Agency> getAllAgencies();
 
     Agency getAgencyById(Long id);
+
+    void addAgent(AddAgentDTO addAgentDTO);
 }

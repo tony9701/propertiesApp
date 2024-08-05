@@ -1,5 +1,6 @@
 package com.topHomes.propertiesApp.service.impl;
 
+import com.topHomes.propertiesApp.model.dto.AddAgentDTO;
 import com.topHomes.propertiesApp.model.dto.RegisterAgencyDTO;
 import com.topHomes.propertiesApp.model.dto.RegisterUserDTO;
 import com.topHomes.propertiesApp.model.entity.Agency;
@@ -19,6 +20,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -80,6 +82,27 @@ public class AgencyServiceImpl implements AgencyService {
     public Agency getAgencyById(Long id) {
         return agencyRepository.findById(id)
                 .orElseThrow(() -> new ObjectNotFoundException("Agency not found"));
+    }
+
+    @Override
+    public void addAgent(AddAgentDTO addAgentDTO) {
+        //get user with email or throw if user is not registered
+        User user = userService.getUserByEmail(addAgentDTO.getEmail())
+                .orElseThrow(() -> new ObjectNotFoundException("The agent you want to add has to be already registered as a user!"));
+
+        //check if that user is not already an agent or agent admin
+        if (user.getRoles().stream().anyMatch(r -> r.getRole().equals(UserRoleEnum.AGENT)) ||
+                user.getRoles().stream().anyMatch(r -> r.getRole().equals(UserRoleEnum.AGENCY_ADMIN))) {
+            throw new UserAlreadyExistsException("The user is already an AGENT");
+        }
+
+        //get current agency
+        User currentUser = userService.getCurrentUser().get();
+        Agency agency = currentUser.getAgency();
+
+        //set AGENCY and  add role "AGENT"
+        user.setAgency(agency);
+        userService.addRoleAndSave(user);
     }
 
     private Agency map(RegisterAgencyDTO registerAgencyDTO) {

@@ -34,7 +34,8 @@
                 <input type="email" id="email" name="email" placeholder="User Email" required>
                 <i class="fa-solid fa-envelope"></i>
                 <span id="email-error" class="error-message"></span>
-                <p>The agent you want to add has to be already registered as a user!</p>
+<!--                <p>The agent you want to add has to be already registered as a user!</p>-->
+                <p><span class="wrong-credentials" th:if="${isProblem}" th:text="${message}"></span></p>
             </div>
             <button type="submit" class="btn-submit">Add Agent</button>
         </form>

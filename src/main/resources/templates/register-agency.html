@@ -67,6 +67,7 @@
                 <i class="fa-solid fa-envelope"></i>
                 <span id="email-error" class="error-message"></span>
             </div>
+            <p><span class="wrong-credentials" th:if="${isProblem}">Agency or User with this email already exists.</span></p>
 
             <div class="input-box">
                 <input type="number" th:field="*{mobileNumber}" placeholder="Mobile Number"
