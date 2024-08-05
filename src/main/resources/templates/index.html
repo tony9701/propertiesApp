@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Poetsen+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/index.css" />
     <link rel="stylesheet" href="/css/navbar-style.css" />
     <script src="/js/main.js"></script>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
@@ -17,7 +18,14 @@
 <body>
     <header>
         <div th:replace="~{fragments/navbar::navbar(activeLink=${''})}"></div>
-
     </header>
+    <div class="wrapper">
+    <div class="container">
+        <div class="welcome-message">
+            <h1>Welcome to TopHomes!</h1>
+            <p>Discover your dream home with ease. Whether you're looking to buy your first house or upgrade to a new property, we've got you covered. Explore thousands of listings, get personalized recommendations, and connect with trusted agents. Your perfect home is just a tap away!</p>
+        </div>
+    </div>
+    </div>
 </body>
 </html>
