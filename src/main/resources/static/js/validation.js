@@ -302,6 +302,7 @@ function validateFormAddAgent() {
     const email = document.getElementById("email").value;
 
     const emailError = document.getElementById("email-error");
+    let isValid = true;
 
     emailError.textContent = "";
 

@@ -26,6 +26,19 @@
     <script src="/js/main.js"></script>
     <script src="/js/validation.js"></script>
     <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
+    <style>
+        /* Remove the spinners in WebKit browsers */
+        input[type=number]::-webkit-outer-spin-button,
+        input[type=number]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Remove the spinners in Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
     <title>TopHomes - Add Property</title>
 </head>
 <body>
@@ -75,7 +88,7 @@
                     </div>
                     <div class="input-box">
                         <input type="number" name="price" id="price" placeholder="Price" required/>
-                        <i class="fa-solid fa-dollar-sign"></i>
+                        <i class="fa-solid fa-euro-sign"></i>
                         <span id="price-error" class="error-message"></span>
                     </div>
                     <div class="input-box">
