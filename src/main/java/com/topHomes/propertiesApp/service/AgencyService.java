@@ -11,4 +11,6 @@ public interface AgencyService {
     void registerAgency(RegisterAgencyDTO registerAgencyDTO);
 
     List<Agency> getAllAgencies();
+
+    Agency getAgencyById(Long id);
 }

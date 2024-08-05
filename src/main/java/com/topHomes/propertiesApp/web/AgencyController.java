@@ -7,6 +7,7 @@ import com.topHomes.propertiesApp.model.entity.UserRole;
 import com.topHomes.propertiesApp.model.enums.UserRoleEnum;
 import com.topHomes.propertiesApp.repository.AgencyRepository;
 import com.topHomes.propertiesApp.repository.UserRepository;
+import com.topHomes.propertiesApp.service.AgencyService;
 import com.topHomes.propertiesApp.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
@@ -21,12 +22,13 @@ import java.util.stream.Collectors;
 @RequestMapping("/agencies")
 public class AgencyController {
 
-    private final AgencyRepository agencyRepository;
+
+    private final AgencyService agencyService;
     private final UserService userService;
     private final UserRepository userRepository;
 
-    public AgencyController(AgencyRepository agencyRepository, UserService userService, UserRepository userRepository) {
-        this.agencyRepository = agencyRepository;
+    public AgencyController(AgencyService agencyService, UserService userService, UserRepository userRepository) {
+        this.agencyService = agencyService;
         this.userService = userService;
         this.userRepository = userRepository;
     }
@@ -34,36 +36,11 @@ public class AgencyController {
 
     @GetMapping("/{id}")
     public String agencyPanelByDetailsButton(@PathVariable Long id, Model model) {
-        Optional<Agency> byId = agencyRepository.findById(id);
-
-        if (byId.isPresent()) {
-            Agency agency = byId.get();
-            User user = userService.getCurrentUser().get();
-
-            //check if currentUser is Agent,Admin or Agency-Admin
-            if (isAuthenticated(user.getRoles())) {
-                model.addAttribute("agency", agency);
-                model.addAttribute("user", user);
-                return "agency-panel";
-            }
-
-            return "not-allowed";
-        }
-
-        return "agency-not-found";
-    }
-
-    @GetMapping("/agency-panel")
-    public String agencyPanel(Model model) {
-
-        //get current user
+        Agency agency = agencyService.getAgencyById(id);
         User user = userService.getCurrentUser().get();
+        boolean isUserAuthenticated = userService.isUserAuthenticated();
 
-        //get current agency
-        Agency agency = user.getAgency();
-
-        //check if currentUser is Agent,Admin or Agency-Admin
-        if (isAuthenticated(user.getRoles())) {
+        if (isUserAuthenticated) {
             model.addAttribute("agency", agency);
             model.addAttribute("user", user);
             return "agency-panel";
@@ -72,12 +49,23 @@ public class AgencyController {
         return "not-allowed";
     }
 
-    private static boolean isAuthenticated(List<UserRole> roles) {
-        return roles.stream().anyMatch(r -> r.getRole().name().equals("ADMIN")) ||
-                roles.stream().anyMatch(r -> r.getRole().name().equals("AGENT")) ||
-                roles.stream().anyMatch(r -> r.getRole().name().equals("AGENCY_ADMIN"));
-    }
+    @GetMapping("/agency-panel")
+    public String agencyPanel(Model model) {
 
+        //get current user
+        User user = userService.getCurrentUser().get();
+        //get current agency
+        Agency agency = user.getAgency();
+        boolean isAuthenticated = userService.isUserAuthenticated();
+
+        if (isAuthenticated) {
+            model.addAttribute("agency", agency);
+            model.addAttribute("user", user);
+            return "agency-panel";
+        }
+
+        return "not-allowed";
+    }
 
     @GetMapping("/add-agent")
     public String addAgentView() {

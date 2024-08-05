@@ -12,12 +12,14 @@ import com.topHomes.propertiesApp.repository.UserRoleRepository;
 import com.topHomes.propertiesApp.service.AddressService;
 import com.topHomes.propertiesApp.service.AgencyService;
 import com.topHomes.propertiesApp.service.UserService;
+import com.topHomes.propertiesApp.service.exception.ObjectNotFoundException;
+import com.topHomes.propertiesApp.service.exception.UserAlreadyExistsException;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
+
 
 @Service
 public class AgencyServiceImpl implements AgencyService {
@@ -43,7 +45,7 @@ public class AgencyServiceImpl implements AgencyService {
 
         if(agencyRepository.existsByEmail(registerAgencyDTO.getEmail()) ||
             userRepository.existsByEmail(registerAgencyDTO.getEmail())) {
-            return; //TODO return error
+            throw new UserAlreadyExistsException("User with that email already exists");
         }
 
         //create user with same credentials as the agency
@@ -71,6 +73,12 @@ public class AgencyServiceImpl implements AgencyService {
     @Override
     public List<Agency> getAllAgencies() {
         return agencyRepository.findAll();
+    }
+
+    @Override
+    public Agency getAgencyById(Long id) {
+        return agencyRepository.findById(id)
+                .orElseThrow(() -> new ObjectNotFoundException("Agency not found"));
     }
 
     private Agency map(RegisterAgencyDTO registerAgencyDTO) {
