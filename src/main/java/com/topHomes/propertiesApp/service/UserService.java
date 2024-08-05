@@ -24,4 +24,7 @@ public interface UserService {
     User addRoleAndSave(User user);
 
     User deleteAgent(User user);
+
+    boolean isUserAuthenticated();
+
 }

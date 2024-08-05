@@ -28,4 +28,5 @@ public class RegisterAgencyDTO {
     @NotBlank
     @Size(min = 6)
     private String confirmPassword;
+
 }

@@ -74,7 +74,6 @@ public class PropertyServiceImpl implements PropertyService {
 
         property.setAddress(address);
 
-        //get the user and agency TODO check if works
         User user = userService.getCurrentUser().get();
 
         boolean isAgent = user.getRoles().stream().anyMatch(role -> role.getRole().name().equals("AGENT"));
@@ -86,7 +85,6 @@ public class PropertyServiceImpl implements PropertyService {
             Agency agency = user.getAgency();
             property.setAgency(agency);
             property.setUser(user);
-            //TODO add user
         }
 
         return property;

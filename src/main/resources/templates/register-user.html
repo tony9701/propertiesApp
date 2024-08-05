@@ -45,6 +45,7 @@
                 <span id="last-name-error" class="error-message"></span>
             </div>
             <div class="input-box">
+                <p><span style="color: red" th:if="${isProblem}">User with that email already exists.</span></p>
                 <input type="text" id="email" th:field="*{email}" placeholder="Email"
                        required>
                 <i class="fa-solid fa-envelope"></i>

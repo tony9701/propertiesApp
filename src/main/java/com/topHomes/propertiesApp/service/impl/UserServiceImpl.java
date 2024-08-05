@@ -8,6 +8,7 @@ import com.topHomes.propertiesApp.model.user.PropertiesAppUserDetails;
 import com.topHomes.propertiesApp.repository.UserRepository;
 import com.topHomes.propertiesApp.repository.UserRoleRepository;
 import com.topHomes.propertiesApp.service.UserService;
+import com.topHomes.propertiesApp.service.exception.UserAlreadyExistsException;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -39,7 +40,7 @@ public class UserServiceImpl implements UserService {
     public void registerUser(RegisterUserDTO registerUserDTO) {
         //check if email already exist
         if (userRepository.existsByEmail(registerUserDTO.getEmail())) {
-         return; //TODO send error
+            throw new UserAlreadyExistsException("User with this email already exists");
         }
 
         User user = map(registerUserDTO);
@@ -110,6 +111,15 @@ public class UserServiceImpl implements UserService {
         user.setRoles(roles);
         user.setAgency(null);
         return userRepository.save(user);
+    }
+
+    @Override
+    public boolean isUserAuthenticated() {
+        List<UserRole> roles = getCurrentUser().get().getRoles();
+        return roles.stream().anyMatch(r -> r.getRole().name().equals("ADMIN")) ||
+                roles.stream().anyMatch(r -> r.getRole().name().equals("AGENT")) ||
+                roles.stream().anyMatch(r -> r.getRole().name().equals("AGENCY_ADMIN"));
+
     }
 
     private User map(RegisterUserDTO registerUserDTO) {

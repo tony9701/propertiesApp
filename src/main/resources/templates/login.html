@@ -26,6 +26,9 @@
      <div class="login-form">
         <div class="wrapper">
             <h1>Login</h1>
+            <div class="wrong-credentials" th:if="${param.error}">
+                <p>Wrong email or password</p>
+            </div>
             <form onsubmit="return validateLogin()"
                   th:method="post"
                   th:action="@{/login}">

@@ -50,7 +50,7 @@ public class SecurityConfig {
                                 // What will happen if the login is successful
                                 .defaultSuccessUrl("/", true)
                                 // What will happen if the login fails
-                                .failureForwardUrl("/login-error")
+                                .failureUrl("/login?error=true")
                 )
                 .logout(
                         logout ->

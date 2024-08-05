@@ -43,6 +43,7 @@ public class AgencyServiceImpl implements AgencyService {
     @Override
     public void registerAgency(RegisterAgencyDTO registerAgencyDTO) {
 
+        //TODO CATCH EXCEPTION
         if(agencyRepository.existsByEmail(registerAgencyDTO.getEmail()) ||
             userRepository.existsByEmail(registerAgencyDTO.getEmail())) {
             throw new UserAlreadyExistsException("User with that email already exists");

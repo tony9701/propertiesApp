@@ -4,12 +4,15 @@ import com.topHomes.propertiesApp.model.dto.RegisterAgencyDTO;
 import com.topHomes.propertiesApp.model.dto.RegisterUserDTO;
 import com.topHomes.propertiesApp.service.AgencyService;
 import com.topHomes.propertiesApp.service.UserService;
+import com.topHomes.propertiesApp.service.exception.UserAlreadyExistsException;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class RegistrationController {
@@ -38,12 +41,15 @@ public class RegistrationController {
     }
 
     @PostMapping("/user-register")
-    public String userRegisterDo(@Valid RegisterUserDTO registerUserDTO,
-                                 BindingResult bindingResult) {
+    public String userRegisterDo(@Valid RegisterUserDTO registerUserDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 
-        userService.registerUser(registerUserDTO);
-
-        return "index";
+        try {
+            userService.registerUser(registerUserDTO);
+        } catch (UserAlreadyExistsException e) {
+            redirectAttributes.addFlashAttribute("isProblem", true);
+            return "redirect:/user-register";
+        }
+        return "redirect:/login";
     }
 
     @ModelAttribute("registerAgencyDTO")
@@ -57,10 +63,9 @@ public class RegistrationController {
     }
 
     @PostMapping("/agency-register")
-    public String agencyRegisterDo(@Valid RegisterAgencyDTO registerAgencyDTO,
-                                   BindingResult bindingResult) {
+    public String agencyRegisterDo(@Valid RegisterAgencyDTO registerAgencyDTO) {
         agencyService.registerAgency(registerAgencyDTO);
 
-        return "index";
+        return "/login";
     }
 }
