@@ -1,6 +1,6 @@
 <a id="readme-top"></a>
 # Introduction
-  Hello. That's my first ![image](https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white) project and it is for my SOFTUNI Final Exam.
+  Hello. That's my first <img src="https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white"></img>  <img src="https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white"></img> MVC project and it is for my SOFTUNI Final Exam.
 
 
 <h1><img src="https://github.com/user-attachments/assets/a2c2c5ab-f412-4fa0-8f46-0f77ca8f5712" width="48"> <br><strong>SOFTUNI</strong>, before starting the project, <a href="https://github.com/tony9701/messagesApi" targer="_blank">download</a> the REST API! - https://github.com/tony9701/messagesApi
@@ -12,23 +12,9 @@
 
 - [About](#beginner-about)
 - [Usage](#zap-usage)
-  - [Installation](#electric_plug-installation)
-  - [Commands](#package-commands)
-- [Development](#wrench-development)
-  - [Pre-Requisites](#notebook-pre-requisites)
-  - [Developmen Environment](#nut_and_bolt-development-environment)
-  - [File Structure](#file_folder-file-structure)
-  - [Build](#hammer-build)  
-  - [Deployment](#rocket-deployment)  
-- [Community](#cherry_blossom-community)
-  - [Contribution](#fire-contribution)
-  - [Branches](#cactus-branches)
-  - [Guideline](#exclamation-guideline)  
-- [FAQ](#question-faq)
-- [Resources](#page_facing_up-resources)
-- [Gallery](#camera-gallery)
-- [Credit/Acknowledgment](#star2-creditacknowledgment)
-- [License](#lock-license)
+- [REST API](#wrench-rest-api)
+- [Installation](#electric_plug-installation)
+- [Built With](#star-built-with)
 
 ##  :beginner: About
 Welcome to PropertyApp! This application allows users to buy or rent properties and provides agents with the ability to sell or let properties.
@@ -97,6 +83,22 @@ Before starting the application, ensure the REST API is running. Download and se
    npm start
    ```
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-##  :camera: Gallery
-Pictures of your project.
+
+##  :star: Built With
+
+* <img src="https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white"></img>
+* <img src="https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white"></img>
+* <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E"></img>
+* <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"></img>
+* <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white"></img>
+* <img src="https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white"></img>
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## ❗ Additional Information
+Unfortunately, the time wasn’t enough to finish the project as I had hoped. There are still some functions that need to be added or fixed, and the UI needs improvement in some areas.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+
