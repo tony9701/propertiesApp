@@ -63,7 +63,7 @@ public class PropertyServiceImpl implements PropertyService {
         return propertyRepository.findAllByTransactionType(TransactionTypeEnum.RENT);
     }
 
-    private Property map(AddPropertyDTO addPropertyDTO) {
+    public Property map(AddPropertyDTO addPropertyDTO) {
         Property property = modelMapper.map(addPropertyDTO, Property.class);
 
         //create address

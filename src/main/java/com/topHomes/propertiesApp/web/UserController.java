@@ -47,6 +47,7 @@ public class UserController {
 
     @DeleteMapping("/{id}")
     public String delete(@PathVariable Long id, Model model) {
+        //TODO Move in the service
         Optional<User> byId = userRepository.findById(id);
         if (byId.isPresent()) {
             User user = byId.get();

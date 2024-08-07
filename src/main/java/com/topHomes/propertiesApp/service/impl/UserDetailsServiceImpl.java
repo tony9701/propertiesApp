@@ -31,7 +31,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     }
 
-    private static UserDetails map(User user) {
+    public static UserDetails map(User user) {
 
         List<GrantedAuthority> list = user.getRoles().stream().map(UserRole::getRole).map(UserDetailsServiceImpl::map).toList();
 
@@ -42,7 +42,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         );
     }
 
-    private static GrantedAuthority map(UserRoleEnum role) {
+    public static GrantedAuthority map(UserRoleEnum role) {
         return new SimpleGrantedAuthority("ROLE_" + role.name());
     }
 }
