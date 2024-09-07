@@ -2,12 +2,6 @@
 # Introduction
   Hello. That's my first <img src="https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white"></img>  <img src="https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white"></img> MVC project and it is for my SOFTUNI Final Exam.
 
-
-<h1><img src="https://github.com/user-attachments/assets/a2c2c5ab-f412-4fa0-8f46-0f77ca8f5712" width="48"> <br><strong>SOFTUNI</strong>, before starting the project, <a href="https://github.com/tony9701/messagesApi" targer="_blank">download</a> the REST API! - https://github.com/tony9701/messagesApi
-<br><img src="https://github.com/user-attachments/assets/a2c2c5ab-f412-4fa0-8f46-0f77ca8f5712" width="48">
-
-
-
 ## :ledger: Index
 
 - [About](#beginner-about)
